@@ -1,6 +1,6 @@
 package ua.nure.hrynko.SummaryTask4.db;
 
-import ua.nure.hrynko.SummaryTask4.db.dto.Entity;
+import java.io.Serializable;
 
 /**
  * Provide records for virtual table:
@@ -9,9 +9,11 @@ import ua.nure.hrynko.SummaryTask4.db.dto.Entity;
  * </pre>
 
  */
-public class UserOrderBean extends Entity {
+public class UserOrderBean implements Serializable {
 
 	private static final long serialVersionUID = -5654982557199337483L;
+
+	private Long id;
 
 	private long orderId;
 
@@ -22,6 +24,15 @@ public class UserOrderBean extends Entity {
 	private int orderBill;
 
 	private String statusName;
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public long getOrderId() {
 		return orderId;

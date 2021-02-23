@@ -1,12 +1,16 @@
 package ua.nure.hrynko.SummaryTask4.db.dto;
 
+import java.io.Serializable;
+
 /**
  * User entity.
  */
-public class User extends Entity {
+public class User implements Serializable {
 
 	private static final long serialVersionUID = -6889036256149495388L;
-	
+
+	private Long id;
+
 	private String login;
 	
 	private String password;
@@ -16,6 +20,15 @@ public class User extends Entity {
 	private String lastName;
 
 	private int roleId;
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getLogin() {
 		return login;

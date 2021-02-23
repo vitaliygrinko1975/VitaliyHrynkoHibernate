@@ -1,6 +1,8 @@
 package ua.nure.hrynko.SummaryTask4.db.dto;
 
-public class OrdersMenu extends Entity {
+import java.io.Serializable;
+
+public class OrdersMenu implements Serializable {
     private Long orderId;
     private Long menuId;
 
@@ -22,9 +24,7 @@ public class OrdersMenu extends Entity {
 
     @Override
     public String toString() {
-        return "OrderMenu [orderId=" + orderId + ", menuId=" + menuId +
-                ", getId()=" + getId() + "]";
-
+        return "OrderMenu [orderId=" + orderId + ", menuId=" + menuId +"]";
 
     }
 }

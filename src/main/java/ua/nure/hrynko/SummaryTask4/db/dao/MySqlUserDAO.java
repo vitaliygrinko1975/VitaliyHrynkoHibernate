@@ -164,7 +164,7 @@ public class MySqlUserDAO implements UserDAO {
     }
 
     // //////////////////////////////////////////////////////////
-    // Entity access methods (for transactions)
+    // Entityes access methods (for transactions)
     // //////////////////////////////////////////////////////////
 
 

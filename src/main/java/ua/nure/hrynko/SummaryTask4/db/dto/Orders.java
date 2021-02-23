@@ -1,18 +1,31 @@
 package ua.nure.hrynko.SummaryTask4.db.dto;
 
+import java.io.Serializable;
+
 /**
  * Orders entity.
 
  */
-public class Orders extends Entity {
+public class Orders implements Serializable {
 
 	private static final long serialVersionUID = 5692708766041889396L;
+
+	private Long id;
 
 	private Integer bill;
 
 	private Long userId;
 
 	private int statusId;
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Integer getBill() {
 		return bill;

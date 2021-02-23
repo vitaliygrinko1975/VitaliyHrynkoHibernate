@@ -1,17 +1,18 @@
 package ua.nure.hrynko.SummaryTask4.db.dto;
 
-
+import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 
 /**
  * Menu item entity.
 
  */
-@javax.persistence.Entity(name = "menu")
-public class Menu extends Entity {
+@Entity(name = "menu")
+public class Menu implements Serializable {
 
 	private static final long serialVersionUID = 4716395168539434663L;
 
@@ -24,9 +25,14 @@ public class Menu extends Entity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-
+	@NotNull
+	@Size(max = 256)
+	@Column(name = "price", nullable = false)
 	private Integer price;
-	
+
+	@NotNull
+	@Size(max = 256)
+	@Column(name = "category", nullable = false)
 	private String category;
 
 
