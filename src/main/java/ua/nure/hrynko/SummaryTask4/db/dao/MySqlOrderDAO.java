@@ -169,7 +169,7 @@ public class MySqlOrderDAO implements OrderDAO {
         Orders orders = new Orders();
         orders.setId(rs.getLong(Fields.ENTITY_ID));
         orders.setBill(rs.getInt(Fields.ORDER_BILL));
-        orders.setUserId(rs.getLong(Fields.ORDER_USER_ID));
+        orders.setUserId(rs.getInt(Fields.ORDER_USER_ID));
         orders.setStatusId(rs.getInt(Fields.ORDER_STATUS_ID));
         return orders;
     }

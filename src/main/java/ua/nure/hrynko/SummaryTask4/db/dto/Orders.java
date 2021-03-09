@@ -1,21 +1,33 @@
 package ua.nure.hrynko.SummaryTask4.db.dto;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
  * Orders entity.
 
  */
+@Entity(name = "orders")
 public class Orders implements Serializable {
 
 	private static final long serialVersionUID = 5692708766041889396L;
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
+	@Size(max = 256)
+	@Column(name = "bill", nullable = false)
 	private Integer bill;
 
-	private Long userId;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private int userId;
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "status_id", referencedColumnName = "id")
 	private int statusId;
 
 
@@ -35,11 +47,11 @@ public class Orders implements Serializable {
 		this.bill = bill;
 	}
 
-	public Long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

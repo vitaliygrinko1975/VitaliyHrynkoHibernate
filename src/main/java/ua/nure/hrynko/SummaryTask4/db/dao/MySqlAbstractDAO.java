@@ -2,14 +2,14 @@ package ua.nure.hrynko.SummaryTask4.db.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import ua.nure.hrynko.SummaryTask4.db.HibernateUtil;
+import ua.nure.hrynko.SummaryTask4.db.HibernateSessionFactoryUtil;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.AbstractDAO;
 import org.hibernate.query.Query;
 import java.util.List;
 
 public abstract class MySqlAbstractDAO <T> implements AbstractDAO {
 
-        protected SessionFactory factory = HibernateUtil.getSessionFactory();
+        protected SessionFactory factory = HibernateSessionFactoryUtil.getSessionFactory();
         protected final Class aClass;
         protected final String tableName;
         protected MySqlAbstractDAO(Class aClass, String tableName) {

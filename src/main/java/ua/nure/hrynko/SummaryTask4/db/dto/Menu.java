@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
+
 /**
  * Menu item entity.
 
@@ -34,6 +35,7 @@ public class Menu implements Serializable {
 	@Size(max = 256)
 	@Column(name = "category", nullable = false)
 	private String category;
+
 
 
 	public void setId(Long id) { this.id = id; }

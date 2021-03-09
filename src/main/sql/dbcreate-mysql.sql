@@ -83,8 +83,8 @@ CREATE TABLE statuses(
 -- we use ENUM as the Status entity, so the numeration must started
 -- from 0 with the step equaled to 1
 -- --------------------------------------------------------------
-INSERT INTO statuses VALUES(0, 'BLOCKING');
-INSERT INTO statuses VALUES(1, 'UNBLOCKING');
+INSERT INTO status VALUES(0, 'BLOCKING');
+INSERT INTO status VALUES(1, 'UNBLOCKING');
 
 
 
@@ -95,7 +95,7 @@ CREATE TABLE orders(
 	id INTEGER NOT NULL auto_increment PRIMARY KEY,
 	bill INTEGER NOT NULL DEFAULT 0,
 	user_id INTEGER NOT NULL REFERENCES users(id),
-	status_id INTEGER NOT NULL REFERENCES statuses(id) 
+	status_id INTEGER NOT NULL REFERENCES status(id)
 );
 
 -- bill = 0; user_id=2; status_id=0
@@ -141,6 +141,6 @@ INSERT INTO orders_menu VALUES(2, 7);
 SELECT * FROM orders_menu;
 SELECT * FROM menu;
 SELECT * FROM orders;
-SELECT * FROM statuses;
+SELECT * FROM status;
 SELECT * FROM users;
 SELECT * FROM roles;

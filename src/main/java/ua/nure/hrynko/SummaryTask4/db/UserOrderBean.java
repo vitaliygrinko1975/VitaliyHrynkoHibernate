@@ -25,7 +25,6 @@ public class UserOrderBean implements Serializable {
 
 	private String statusName;
 
-
 	public Long getId() {
 		return id;
 	}
