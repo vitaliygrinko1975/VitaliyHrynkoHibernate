@@ -29,7 +29,7 @@ public class Query {
             + "	WHERE id=?";
 
     public static final String SQL_GET_USER_ORDER_BEANS = "SELECT o.id, u.first_name, u.last_name, o.bill, s.name"
-            + "	FROM users u, orders o, statuses s"
+            + "	FROM users u, orders o, status s"
             + "	WHERE o.user_id=u.id AND o.status_id=s.id";
 
 

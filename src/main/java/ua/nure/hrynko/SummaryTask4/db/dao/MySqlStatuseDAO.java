@@ -31,7 +31,7 @@ public class MySqlStatuseDAO implements StatuseDAO {
         Connection con = null;
         try {
             con = DBManager.getConnection();
-            stmt = con.prepareStatement("UPDATE statuses SET name=BLOCKING"
+            stmt = con.prepareStatement("UPDATE status SET name=BLOCKING"
                     + "	WHERE id=? ");
             stmt.setString(1, id);
             stmt.executeUpdate();
@@ -55,7 +55,7 @@ public class MySqlStatuseDAO implements StatuseDAO {
         Connection con = null;
         try {
             con = DBManager.getConnection();
-            stmt = con.prepareStatement("UPDATE statuses SET name=UNBLOCKING"
+            stmt = con.prepareStatement("UPDATE status SET name=UNBLOCKING"
                     + "	WHERE id=? ");
             stmt.setString(1, id);
             stmt.executeUpdate();
