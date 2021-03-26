@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlMenuDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class AddCarCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("AddCarCommand starts");
 
-        MySqlMenuDAO addedCar = MySqlMenuDAO.getInstance();
+        MySqlCarsDAO addedCar = new MySqlCarsDAO();
 
         String name = request.getParameter("addName");
 
@@ -31,11 +31,11 @@ public class AddCarCommand extends Command {
 
         LOG.trace("Request parameter: price --> " + price);
 
-        String classes = request.getParameter("addCategory");
+        String category = request.getParameter("addCategory");
 
-        LOG.trace("Request parameter: category --> " + classes);
+        LOG.trace("Request parameter: category --> " + category);
 
-        addedCar.addCarToMenuDb(name,price,classes);
+      //  addedCar.addCarToCarsDb(name,price,category);
 
         LOG.trace("add name car : --> " );
 
@@ -45,4 +45,3 @@ public class AddCarCommand extends Command {
     }
 
 }
-

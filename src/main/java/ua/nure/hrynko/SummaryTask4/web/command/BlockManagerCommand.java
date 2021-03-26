@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlStatuseDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlStatusDAO;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ public class BlockManagerCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("BlockManagerCommand starts");
 
-        MySqlStatuseDAO blockedStatus = MySqlStatuseDAO.getInstance();
+        MySqlStatusDAO blockedStatus = MySqlStatusDAO.getInstance();
 
         String id = request.getParameter("blockButt");
 

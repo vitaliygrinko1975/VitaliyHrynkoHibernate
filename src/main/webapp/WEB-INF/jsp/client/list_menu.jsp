@@ -31,13 +31,13 @@
 					</thead>
 	
 					<c:set var="k" value="0"/>
-					<c:forEach var="item" items="${menuItems}">
+					<c:forEach var="car" items="${carsItems}">
 						<c:set var="k" value="${k+1}"/> 
 						<tr>
 							<td><c:out value="${k}"/></td>
-							<td>${item.name}</td>
-							<td>${item.price}</td>
-							<td><input type="checkbox" name="itemId" value="${item.id}"/></td>
+							<td>${car.name}</td>
+							<td>${car.price}</td>
+							<td><input type="checkbox" name="itemId" value="${car.id}"/></td>
 						</tr>
 					</c:forEach>
 				</table>

@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlStatuseDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlStatusDAO;
 import ua.nure.hrynko.SummaryTask4.db.UserOrderBean;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 import javax.servlet.ServletException;
@@ -49,7 +49,7 @@ public class ListOrdersCommand extends Command {
 						  HttpServletResponse response) throws IOException, ServletException, AppException {
 		LOG.debug("Commands starts");
 				
-		List<UserOrderBean> userOrderBeanList = MySqlStatuseDAO.getInstance().getUserOrderBeans();
+		List<UserOrderBean> userOrderBeanList = MySqlStatusDAO.getInstance().getUserOrderBeans();
 		LOG.trace("Found in DB: userOrderBeanList --> " + userOrderBeanList);
 		
 		Collections.sort(userOrderBeanList, compareById);

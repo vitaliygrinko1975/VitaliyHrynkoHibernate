@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUserDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUsersDAO;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ public class ManagerOrdersBlockCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("ManagerOrdersBlockCommand");
 
-        MySqlUserDAO blockOrders = MySqlUserDAO.getInstance();
+        MySqlUsersDAO blockOrders = MySqlUsersDAO.getInstance();
 
         String login = request.getParameter("addLoginClient");
 

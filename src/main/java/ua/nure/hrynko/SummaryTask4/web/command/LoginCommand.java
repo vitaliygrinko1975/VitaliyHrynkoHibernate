@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
 import ua.nure.hrynko.SummaryTask4.db.DBManager;
 import ua.nure.hrynko.SummaryTask4.db.Role;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUserDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.User;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUsersDAO;
+import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -41,7 +41,7 @@ public class LoginCommand extends Command {
             throw new AppException("Login/password cannot be empty");
         }
 
-        User user = MySqlUserDAO.getInstance().findUserByLogin(login);
+        Users user = MySqlUsersDAO.getInstance().findUserByLogin(login);
         LOG.trace("Found in DB: user --> " + user);
 
         if (user == null || !password.equals(user.getPassword())) {

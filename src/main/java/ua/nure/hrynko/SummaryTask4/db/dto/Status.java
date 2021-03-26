@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-@Entity(name = "statuses")
+@Entity(name = "status")
 public class Status implements Serializable {
     private static final long serialVersionUID = 4716395168539434663L;
 

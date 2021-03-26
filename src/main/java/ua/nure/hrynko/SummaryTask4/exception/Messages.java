@@ -9,18 +9,18 @@ public class Messages {
 	private Messages() {
 		// no op
 	}
-	
+
 	public static final String ERR_CANNOT_OBTAIN_USER_ORDER_BEANS = "Cannot obtain user order beans";
 
 	public static final String ERR_CANNOT_OBTAIN_CONNECTION = "Cannot obtain a connection from the pool";
 
 	public static final String ERR_CANNOT_OBTAIN_CATEGORIES = "Cannot obtain categories";
 
-	public static final String ERR_CANNOT_OBTAIN_MENU_ITEMS = "Cannot obtain menu items";
+	public static final String ERR_CANNOT_OBTAIN_CARS_ITEMS = "Cannot obtain cars items";
 
-	public static final String ERR_CANNOT_OBTAIN_MENU_ITEMS_BY_ORDER = "Cannot obtain menu items by order";
+	public static final String ERR_CANNOT_OBTAIN_MENU_ITEMS_BY_ORDER = "Cannot obtain cars items by order";
 
-	public static final String ERR_CANNOT_OBTAIN_MENU_ITEMS_BY_IDENTIFIERS = "Cannot obtain menu items by its identifiers";
+	public static final String ERR_CANNOT_OBTAIN_CARS_ITEMS_BY_IDENTIFIERS = "Cannot obtain cars items by its identifiers";
 
 	public static final String ERR_CANNOT_OBTAIN_ORDERS = "Cannot obtain orders";
 
@@ -43,5 +43,5 @@ public class Messages {
 	public static final String ERR_CANNOT_CLOSE_STATEMENT = "Cannot close a statement";
 
 	public static final String ERR_CANNOT_OBTAIN_DATA_SOURCE = "Cannot obtain the data source";
-	
+
 }

@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlMenuDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -20,15 +20,15 @@ public class MakeOrdersPageCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("MakeOrdersPageCommand starts");
 
-        MySqlMenuDAO findedcar = MySqlMenuDAO.getInstance();
+        MySqlCarsDAO findedcar = new MySqlCarsDAO();
 
         String id = request.getParameter("makeOrderButt");
 
         LOG.trace("Request parameter: id --> " + id);
 
-        request.setAttribute("car", findedcar.findCarToMenuDb(Integer.parseInt(id)));
+        //request.setAttribute("car", findedcar.findCarToCarsDb(Integer.parseInt(id));
 
-        LOG.trace("find car to id: --> " + findedcar.findCarToMenuDb(Integer.parseInt(id)));
+       // LOG.trace("find car to id: --> " + findedcar.findCarToCarsDb(Integer.parseInt(id)));
 
         LOG.debug("MakeOrdersPageCommand finished");
 

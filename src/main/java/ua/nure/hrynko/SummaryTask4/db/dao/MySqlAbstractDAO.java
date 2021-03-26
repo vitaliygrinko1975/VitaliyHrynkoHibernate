@@ -7,9 +7,9 @@ import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.AbstractDAO;
 import org.hibernate.query.Query;
 import java.util.List;
 
-public abstract class MySqlAbstractDAO <T> implements AbstractDAO {
+public abstract class MySqlAbstractDAO <T> implements AbstractDAO<T> {
 
-        protected SessionFactory factory = HibernateSessionFactoryUtil.getSessionFactory();
+        protected SessionFactory sessionFactory = HibernateSessionFactoryUtil.getSessionFactory();
         protected final Class aClass;
         protected final String tableName;
         protected MySqlAbstractDAO(Class aClass, String tableName) {
@@ -19,7 +19,7 @@ public abstract class MySqlAbstractDAO <T> implements AbstractDAO {
 
        @Override
         public void save(Object obj) {
-            try (Session session = factory.openSession()) {
+            try (Session session = sessionFactory.openSession()) {
                 Transaction tx = session.beginTransaction();
                 session.save(obj);
                 tx.commit();
@@ -28,7 +28,7 @@ public abstract class MySqlAbstractDAO <T> implements AbstractDAO {
 
         @Override
         public void update(Object obj) {
-            try (Session session = factory.openSession()) {
+            try (Session session = sessionFactory.openSession()) {
                 Transaction tx = session.beginTransaction();
                 session.update(obj);
                 tx.commit();
@@ -37,7 +37,7 @@ public abstract class MySqlAbstractDAO <T> implements AbstractDAO {
 
         @Override
         public void delete(Object obj) {
-            try (Session session = factory.openSession()) {
+            try (Session session = sessionFactory.openSession()) {
                 Transaction tx = session.beginTransaction();
                 session.delete(obj);
                 tx.commit();
@@ -46,14 +46,14 @@ public abstract class MySqlAbstractDAO <T> implements AbstractDAO {
 
         @Override
         public T getById(Long id) {
-            try (Session session = factory.openSession()) {
+            try (Session session = sessionFactory.openSession()) {
                 return (T) session.get(aClass, id);
             }
         }
 
         @Override
         public List<T> getAll() {
-            try (Session session = factory.openSession()) {
+            try (Session session = sessionFactory.openSession()) {
                 Query query = session.createQuery("from " + tableName);
                 return query.list();
             }

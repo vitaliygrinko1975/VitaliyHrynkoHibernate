@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlMenuDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -21,14 +21,14 @@ public class RemoveCarCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
 
-        MySqlMenuDAO deletedCar = MySqlMenuDAO.getInstance();
+        MySqlCarsDAO deletedCar = new MySqlCarsDAO();
 
         String id = request.getParameter("removeButt");
 
         LOG.trace("Request parameter: id --> " + id);
 
 
-        deletedCar.deleteCarToMenuDb(Integer.parseInt(id));
+        deletedCar.deleteCarToCarsDb(Integer.parseInt(id));
 
         LOG.trace("Remove car to id: --> " + id);
 

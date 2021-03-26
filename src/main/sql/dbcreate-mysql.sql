@@ -73,7 +73,7 @@ INSERT INTO users VALUES(DEFAULT, 'manager', 'manager', 'Arsen', 'Arsenov', 2);
 -- STATUSES
 -- statuses for orders
 -- --------------------------------------------------------------
-CREATE TABLE statuses(
+CREATE TABLE status(
 	id INTEGER NOT NULL PRIMARY KEY,
 	name VARCHAR(10) NOT NULL UNIQUE
 );
@@ -106,40 +106,40 @@ INSERT INTO orders VALUES(DEFAULT, 0, 1, 1);
 -- --------------------------------------------------------------
 -- MENU
 -- --------------------------------------------------------------
-CREATE TABLE menu(
+CREATE TABLE cars(
 	id INTEGER NOT NULL auto_increment PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
 	price INTEGER NOT NULL,
 	category VARCHAR(50) NOT NULL
 );
 
-INSERT INTO menu VALUES(DEFAULT, 'Mazda6', 200, 'D');
-INSERT INTO menu VALUES(DEFAULT, 'Wolksvagen Polo', 75, 'B');
-INSERT INTO menu VALUES(DEFAULT, 'Daewoo Matiz', 25, 'A');
-INSERT INTO menu VALUES(DEFAULT, 'Toyota Corolla', 100, 'C');
+INSERT INTO cars VALUES(DEFAULT, 'Mazda6', 200, 'D');
+INSERT INTO cars VALUES(DEFAULT, 'Wolksvagen Polo', 75, 'B');
+INSERT INTO cars VALUES(DEFAULT, 'Daewoo Matiz', 25, 'A');
+INSERT INTO cars VALUES(DEFAULT, 'Toyota Corolla', 100, 'C');
 
 -- --------------------------------------------------------------
 -- ORDERS_MENU
 -- relation between orders and menu
 -- each row of this table represents one menu item
 -- --------------------------------------------------------------
-CREATE TABLE orders_menu(
+CREATE TABLE orders_cars(
 	order_id INTEGER NOT NULL REFERENCES orders(id),
-	menu_id INTEGER NOT NULL REFERENCES menu(id)
+	car_id INTEGER NOT NULL REFERENCES cars(id)
 );
 
-INSERT INTO orders_menu VALUES(1, 1);
-INSERT INTO orders_menu VALUES(1, 7);
-INSERT INTO orders_menu VALUES(1, 5);
+INSERT INTO orders_cars VALUES(1, 1);
+INSERT INTO orders_cars VALUES(1, 7);
+INSERT INTO orders_cars VALUES(1, 5);
 
-INSERT INTO orders_menu VALUES(2, 1);
-INSERT INTO orders_menu VALUES(2, 7);
+INSERT INTO orders_cars VALUES(2, 1);
+INSERT INTO orders_cars VALUES(2, 7);
 	
 -- --------------------------------------------------------------
 -- test database:
 -- --------------------------------------------------------------
-SELECT * FROM orders_menu;
-SELECT * FROM menu;
+SELECT * FROM orders_cars;
+SELECT * FROM cars;
 SELECT * FROM orders;
 SELECT * FROM status;
 SELECT * FROM users;

@@ -2,8 +2,8 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlMenuDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Menu;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
+import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -26,17 +26,17 @@ public class WelcomeCommand extends Command {
         LOG.debug("Command starts");
 
         // get menu items list
-        List<Menu> menuItems = MySqlMenuDAO.getInstance().findMenuItems();
-        LOG.trace("Found in DB: menuItemsList --> " + menuItems);
-
-
-        // put menu items list to the request
-        request.setAttribute("menuItems", menuItems);
-        LOG.trace("Set the request attribute: menuItems --> " + menuItems);
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
+//        List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
+//        LOG.trace("Found in DB: carsItems --> " + carsItems);
+//
+//
+//        // put cars items list to the request
+//        request.setAttribute("carsItems", carsItems);
+//        LOG.trace("Set the request attribute: carsItems --> " + carsItems);
+//        HttpSession session = request.getSession(false);
+//        if (session != null) {
+//            session.invalidate();
+//        }
         LOG.debug("Command finished");
         return Path.PAGE_WELCOME;
 

@@ -1,7 +1,7 @@
 package ua.nure.hrynko.SummaryTask4.db;
 import org.apache.log4j.Logger;
-import ua.nure.hrynko.SummaryTask4.db.dto.Category;
-import ua.nure.hrynko.SummaryTask4.db.dto.User;
+import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import ua.nure.hrynko.SummaryTask4.exception.Messages;
 import javax.naming.Context;
@@ -78,7 +78,7 @@ public final class DBManager {
 	 * @throws DBException
 	 */
     public boolean checkforlogin(String loginclient) throws DBException {
-        List<User> usersList = new ArrayList<User>();
+        List<Users> usersList = new ArrayList<Users>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Connection con = null;
@@ -90,8 +90,8 @@ public final class DBManager {
             con.commit();
         } catch (SQLException ex) {
             rollback(con);
-            LOG.error(Messages.ERR_CANNOT_OBTAIN_MENU_ITEMS, ex);
-            throw new DBException(Messages.ERR_CANNOT_OBTAIN_MENU_ITEMS, ex);
+            LOG.error(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
+            throw new DBException(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
         } finally {
             close(con, pstmt, rs);
         }
@@ -185,12 +185,13 @@ public final class DBManager {
 	 *            Result set from which a category entity will be extracted.
 	 * @return Category entity.
 	 */
-	private Category extractCategory(ResultSet rs) throws SQLException {
-		Category category = new Category();
-		category.setId(rs.getLong(Fields.ENTITY_ID));
-		category.setName(rs.getString(Fields.CATEGORY_NAME));
-		return category;
-	}
+//	private Category extractCategory(ResultSet rs) throws SQLException {
+//		Category category = new Category();
+//		category.setId(rs.getLong(Fields.ENTITY_ID));
+//		category.setName(rs.getString(Fields.CATEGORY_NAME));
+//		return category;
+//	}
+
 
 
 

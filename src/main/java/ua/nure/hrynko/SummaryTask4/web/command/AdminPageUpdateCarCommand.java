@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlMenuDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,21 +17,21 @@ public class AdminPageUpdateCarCommand extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
         LOG.debug("UpdateCarCommand starts");
-        MySqlMenuDAO updatedCar = MySqlMenuDAO.getInstance();
+        MySqlCarsDAO updatedCar = new MySqlCarsDAO();
 
         String id = request.getParameter("carForUpdateButt");
 
         LOG.trace("Request parameter: id --> " + id);
 
 
-        updatedCar.findCarToMenuDb(Integer.parseInt(id));
+       // updatedCar.findCarToCarsDb(Integer.parseInt(id));
 
         LOG.trace("Update car to id: --> " + id);
 
-        request.setAttribute("car", updatedCar.findCarToMenuDb(Integer.parseInt(id)));
+      //  request.setAttribute("car", updatedCar.findCarToCarsDb(Integer.parseInt(id)));
 
         LOG.debug("UpdateCarCommand finished");
-       return Path.PAGE_LIST_ADMIN_UPDATECAR;
+        return Path.PAGE_LIST_ADMIN_UPDATECAR;
     }
 
 }

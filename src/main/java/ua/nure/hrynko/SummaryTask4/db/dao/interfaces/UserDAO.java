@@ -1,6 +1,6 @@
 package ua.nure.hrynko.SummaryTask4.db.dao.interfaces;
 
-import ua.nure.hrynko.SummaryTask4.db.dto.User;
+import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 
 import java.sql.Connection;
@@ -16,22 +16,22 @@ public interface UserDAO {
 
      void deleteUser(Integer id) throws DBException;
 
-     User findUser(long id) throws DBException;
+     Users findUser(long id) throws DBException;
 
 
-     User findUserByLogin(String login) throws DBException;
+     Users findUserByLogin(String login) throws DBException;
 
-     void updateUser(User user) throws DBException;
-
-
-     void updateUser(Connection con, User user) throws SQLException;
+     void updateUser(Users user) throws DBException;
 
 
-
-     List<User> findallusers() throws DBException;
+     void updateUser(Connection con, Users user) throws SQLException;
 
 
 
-    User extractUser(ResultSet rs) throws SQLException;
+     List<Users> findallusers() throws DBException;
+
+
+
+    Users extractUser(ResultSet rs) throws SQLException;
 
 }

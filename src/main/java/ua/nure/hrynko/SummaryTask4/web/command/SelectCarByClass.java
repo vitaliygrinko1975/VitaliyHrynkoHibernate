@@ -1,16 +1,16 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
-import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlMenuDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Menu;
-import ua.nure.hrynko.SummaryTask4.exception.AppException;
+        import org.apache.log4j.Logger;
+        import ua.nure.hrynko.SummaryTask4.Path;
+        import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
+        import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+        import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
+        import javax.servlet.ServletException;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+        import java.io.IOException;
+        import java.util.List;
 
 public class SelectCarByClass extends Command {
 
@@ -23,27 +23,26 @@ public class SelectCarByClass extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
 
-        MySqlMenuDAO selectedByClass = MySqlMenuDAO.getInstance();
+        MySqlCarsDAO selectedByClass = MySqlCarsDAO.getInstance();
 
-        String classCars = request.getParameter("selectClass");
+        String categoryCars = request.getParameter("selectClass");
 
-        if  (selectedByClass.thereIsSuchClass(classCars)) {
-            List<Menu> listcarItems = selectedByClass.selectCarsByClass(classCars);
+        if  (selectedByClass.thereIsSuchCategory(categoryCars)) {
+            List<Cars> carsItems = selectedByClass.selectCarsByClass(categoryCars);
 
-            LOG.trace("Found in DB: menuItemsList --> " + listcarItems);
+            LOG.trace("Found in DB: menuItemsList --> " + carsItems);
 
 
             // put menu items list to the request
-            request.setAttribute("listcarItems", listcarItems);
-            LOG.trace("Set the request attribute:listcarItems --> " );
+            request.setAttribute("carsItems", carsItems);
+            LOG.trace("Set the request attribute:carsItems --> " + carsItems);
 
             LOG.debug("Command finished");
 
-        }return Path.PAGE_LIST_CAR_BY_CLASS;
+        }
+        return Path.PAGE_LIST_CAR_BY_CLASS;
     }
 }
 
 
 
-
-//

@@ -50,17 +50,17 @@
             <td>CLASS</td>
         </tr>
         <c:set var="k" value="0"/>
-        <c:forEach var="item" items="${menuItems}">
+        <c:forEach var="car" items="${carsItems}">
             <c:set var="k" value="${k+1}"/>
             <tr>
                 <td><c:out value="${k}"/></td>
-                <td>${item.name}</td>
-                <td>${item.price}</td>
-                <td>${item.category}</td>
+                <td>${car.name}</td>
+                <td>${car.price}</td>
+                <td>${car.category}</td>
                 <td>
                     <form method="post" action="controller">
                         <input type="hidden" name="command" value="makeOrderCommand"/>
-                        <button type="submit" name ="makeOrderButt" value = "${item.id}"
+                        <button type="submit" name ="makeOrderButt" value = "${car.id}"
                                 class="btn btn-primary btn-block btn-large">make an orders</button>
                     </form>
                 </td>

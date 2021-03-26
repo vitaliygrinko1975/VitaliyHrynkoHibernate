@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUserDAO;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUsersDAO;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class LoginingCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
 
-        MySqlUserDAO addedclient = MySqlUserDAO.getInstance();
+        MySqlUsersDAO addedclient = MySqlUsersDAO.getInstance();
 
         String login = request.getParameter("addLoginClient");
 

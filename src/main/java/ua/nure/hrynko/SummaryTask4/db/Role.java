@@ -1,6 +1,6 @@
 package ua.nure.hrynko.SummaryTask4.db;
 
-import ua.nure.hrynko.SummaryTask4.db.dto.User;
+import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 
 /**
  * Role entity.
@@ -10,7 +10,7 @@ import ua.nure.hrynko.SummaryTask4.db.dto.User;
 public enum Role {
 	ADMIN, CLIENT, MANAGER;
 	
-	public static Role getRole(User user) {
+	public static Role getRole(Users user) {
 		int roleId = user.getRoleId();
 		return Role.values()[roleId];
 	}
