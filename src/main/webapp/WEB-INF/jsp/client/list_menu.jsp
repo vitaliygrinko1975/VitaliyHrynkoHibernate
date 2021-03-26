@@ -18,7 +18,7 @@
 			
 			<form id="make_order" action="controller">
 				<input type="hidden" name="command" value="makeOrder"/>
-				<input value="Make an orders" type="submit"/>
+				<input value="Make an order" type="submit"/>
 			
 				<table id="list_menu_table">
 					<thead>

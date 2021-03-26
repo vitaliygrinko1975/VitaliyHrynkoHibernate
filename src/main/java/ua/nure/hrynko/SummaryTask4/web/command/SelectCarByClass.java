@@ -1,16 +1,16 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-        import org.apache.log4j.Logger;
-        import ua.nure.hrynko.SummaryTask4.Path;
-        import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
-        import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
-        import ua.nure.hrynko.SummaryTask4.exception.AppException;
+import org.apache.log4j.Logger;
+import ua.nure.hrynko.SummaryTask4.Path;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
+import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
-        import javax.servlet.ServletException;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import java.io.IOException;
-        import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 public class SelectCarByClass extends Command {
 
@@ -39,10 +39,11 @@ public class SelectCarByClass extends Command {
 
             LOG.debug("Command finished");
 
-        }
-        return Path.PAGE_LIST_CAR_BY_CLASS;
+        }return Path.PAGE_LIST_CAR_BY_CLASS;
     }
 }
 
 
 
+
+//

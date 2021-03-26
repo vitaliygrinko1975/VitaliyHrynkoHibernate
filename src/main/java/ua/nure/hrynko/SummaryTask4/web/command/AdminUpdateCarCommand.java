@@ -21,7 +21,7 @@ public class AdminUpdateCarCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
 
-        MySqlCarsDAO updatedCar = new MySqlCarsDAO();
+        MySqlCarsDAO updatedCar = MySqlCarsDAO.getInstance();
 
         String id = request.getParameter("carForUpdateButt");
 
@@ -41,7 +41,7 @@ public class AdminUpdateCarCommand extends Command {
 
         LOG.trace("Request parameter: category --> " + category);
 
-       // updatedCar.updateCarToCarsDb(id,name,price,category);
+        updatedCar.updateCarToCarsDb(id,name,price,category);
 
         LOG.trace("update  car by ID: --> " );
 

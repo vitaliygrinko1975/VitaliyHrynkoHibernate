@@ -7,12 +7,12 @@ import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 
  */
 
-public enum Role {
-	ADMIN, CLIENT, MANAGER;
+public enum RoleEnum {
+	ADMIN, CLIENT;
 	
-	public static Role getRole(Users user) {
+	public static RoleEnum getRole(Users user) {
 		int roleId = user.getRoleId();
-		return Role.values()[roleId];
+		return RoleEnum.values()[roleId];
 	}
 	
 	public String getName() {

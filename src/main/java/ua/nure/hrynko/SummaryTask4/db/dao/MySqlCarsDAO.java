@@ -109,8 +109,30 @@ public class MySqlCarsDAO  {
 
         }
 
+       public Cars findCarToCarsDb(long id) throws DBException {
+           Cars Item = null;
+           PreparedStatement pstmt = null;
+           ResultSet rs = null;
+           Connection con = null;
+           try {
+               con = DBManager.getConnection();
+               pstmt = con.prepareStatement("SELECT * FROM cars WHERE id=?");
+               pstmt.setLong(1, id);
+               rs = pstmt.executeQuery();
+               if (rs.next()) {
+                   Item = extractCarsItem(rs);
+               }
+               con.commit();
+           } catch (SQLException ex) {
+               DBManager.rollback(con);
+               throw new DBException(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
+           } finally {
+               DBManager.close(con, pstmt, rs);
+           }
+           return Item;
+       }
 
-       // public Cars findCarToCarsDb(long id) throws DBException {
+
 
 
     public List<Cars> selectCarsByClass(String selectbyclass) throws DBException {

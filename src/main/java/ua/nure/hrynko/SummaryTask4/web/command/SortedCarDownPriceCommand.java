@@ -24,7 +24,7 @@ public class SortedCarDownPriceCommand extends Command {
 
         LOG.debug("SortedCarDownPriceCommand starts");
 
-         //get cars list
+        // get cars list
         List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
         LOG.trace("Found in DB: carsItems --> " + carsItems);
 

@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddManagerCommand extends Command {
+public class AddNewAdminCommand extends Command {
 
     private static final long serialVersionUID = -3071536593627692473L;
 
-    private static final Logger LOG = Logger.getLogger(AddManagerCommand.class);
+    private static final Logger LOG = Logger.getLogger(AddNewAdminCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)

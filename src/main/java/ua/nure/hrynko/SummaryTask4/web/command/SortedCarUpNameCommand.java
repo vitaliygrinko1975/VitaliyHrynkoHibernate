@@ -34,6 +34,6 @@ public class SortedCarUpNameCommand extends Command {
         LOG.trace("Set the request attribute: carsItems --> " + carsItems);
 
         LOG.debug("Command finished");
-         return Path.PAGE_LIST_CAR;
+        return Path.PAGE_LIST_CAR;
     }
 }

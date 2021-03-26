@@ -1,16 +1,18 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
-import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
-import ua.nure.hrynko.SummaryTask4.exception.AppException;
+import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import ua.nure.hrynko.SummaryTask4.Path;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
+import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 /**
  * Lists menu items.
@@ -26,11 +28,11 @@ public class ListCarCommand extends Command {
 						  HttpServletResponse response) throws IOException, ServletException, AppException {
 		
 		LOG.debug("Command starts");
-
+		
 		// get menu items list
 		List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
-		LOG.trace("Found in DB: carsItems --> " + carsItems);
-
+		LOG.trace("Found in DB: carsItens --> " + carsItems);
+		
 
 		// put menu items list to the request
 		request.setAttribute("carsItems", carsItems);

@@ -20,15 +20,15 @@ public class MakeOrdersPageCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("MakeOrdersPageCommand starts");
 
-        MySqlCarsDAO findedcar = new MySqlCarsDAO();
+        MySqlCarsDAO findedcar = MySqlCarsDAO.getInstance();
 
         String id = request.getParameter("makeOrderButt");
 
         LOG.trace("Request parameter: id --> " + id);
 
-        //request.setAttribute("car", findedcar.findCarToCarsDb(Integer.parseInt(id));
+        request.setAttribute("car", findedcar.findCarToCarsDb(Integer.parseInt(id)));
 
-       // LOG.trace("find car to id: --> " + findedcar.findCarToCarsDb(Integer.parseInt(id)));
+        LOG.trace("find car to id: --> " + findedcar.findCarToCarsDb(Integer.parseInt(id)));
 
         LOG.debug("MakeOrdersPageCommand finished");
 

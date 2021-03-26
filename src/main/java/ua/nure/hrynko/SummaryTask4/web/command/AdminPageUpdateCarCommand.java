@@ -17,21 +17,21 @@ public class AdminPageUpdateCarCommand extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
         LOG.debug("UpdateCarCommand starts");
-        MySqlCarsDAO updatedCar = new MySqlCarsDAO();
+        MySqlCarsDAO updatedCar = MySqlCarsDAO.getInstance();
 
         String id = request.getParameter("carForUpdateButt");
 
         LOG.trace("Request parameter: id --> " + id);
 
 
-       // updatedCar.findCarToCarsDb(Integer.parseInt(id));
+        updatedCar.findCarToCarsDb(Integer.parseInt(id));
 
         LOG.trace("Update car to id: --> " + id);
 
-      //  request.setAttribute("car", updatedCar.findCarToCarsDb(Integer.parseInt(id)));
+        request.setAttribute("car", updatedCar.findCarToCarsDb(Integer.parseInt(id)));
 
         LOG.debug("UpdateCarCommand finished");
-        return Path.PAGE_LIST_ADMIN_UPDATECAR;
+       return Path.PAGE_LIST_ADMIN_UPDATECAR;
     }
 
 }

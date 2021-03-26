@@ -21,7 +21,7 @@ public class AddCarCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("AddCarCommand starts");
 
-        MySqlCarsDAO addedCar = new MySqlCarsDAO();
+        MySqlCarsDAO addedCar = MySqlCarsDAO.getInstance();
 
         String name = request.getParameter("addName");
 
@@ -35,7 +35,7 @@ public class AddCarCommand extends Command {
 
         LOG.trace("Request parameter: category --> " + category);
 
-      //  addedCar.addCarToCarsDb(name,price,category);
+        addedCar.addCarToCarsDb(name,price,category);
 
         LOG.trace("add name car : --> " );
 
@@ -45,3 +45,4 @@ public class AddCarCommand extends Command {
     }
 
 }
+

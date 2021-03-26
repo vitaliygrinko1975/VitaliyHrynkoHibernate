@@ -25,16 +25,16 @@ public class ListAdminCommand extends Command {
 
         // get menu items list
         List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
-        LOG.trace("Found in DB: carsItemsList --> " + carsItems);
+        LOG.trace("Found in DB: carsList --> " + carsItems);
 
-        // sort cars by category
+        // sort menu by category
         carsItems.sort(new Comparator<Cars>() {
             public int compare(Cars o1, Cars o2) {
                 return (o1.getPrice() - o2.getPrice());
             }
         });
 
-        // put cars items list to the request
+        // put menu items list to the request
         request.setAttribute("carsItems", carsItems);
         LOG.trace("Set the request attribute: carsItems --> " + carsItems);
 

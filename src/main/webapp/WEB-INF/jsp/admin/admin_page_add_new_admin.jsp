@@ -16,9 +16,9 @@
     </div>
 </div>
 <div class='mydiv'>
-    <h1 align='center'>New manager</h1>
+    <h1 align='center'>New Admin</h1>
     <form method='post' action="controller">
-        <input type="hidden" name="command" value="addManager"/>
+        <input type="hidden" name="command" value="addNewAdmin"/>
         Login: <input type='text' name='addLoginPageAdmin'   required='required'/>
         Password: <input type='text' name='addPasswordPageAdmin'   required='required'/>
         Name: <input type='text' name='addNamePageAdmin'   required='required'/>

@@ -43,8 +43,8 @@
     </table>
 
     <div align='center'  style="display: inline-block;">
-        <a href="controller?command=adminPageAddManager">
-            <button  class="btn btn-primary btn-block btn-large">Add new manager</button>
+        <a href="controller?command=adminPageAddNewAdmin">
+            <button  class="btn btn-primary btn-block btn-large">Add new Admin</button>
         </a>
     </div>
 </div>

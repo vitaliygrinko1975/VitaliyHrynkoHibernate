@@ -1,12 +1,13 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-import ua.nure.hrynko.SummaryTask4.exception.AppException;
+import java.io.IOException;
+import java.io.Serializable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.Serializable;
+
+import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 /**
  * Main interface for the Command pattern implementation.
@@ -18,7 +19,7 @@ public abstract class Command implements Serializable {
 
 
 	public abstract String execute(HttpServletRequest request,
-		 HttpServletResponse response) throws IOException, ServletException,
+								   HttpServletResponse response) throws IOException, ServletException,
 			AppException;
 
 	@Override

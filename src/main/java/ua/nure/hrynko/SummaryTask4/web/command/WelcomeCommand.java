@@ -26,17 +26,17 @@ public class WelcomeCommand extends Command {
         LOG.debug("Command starts");
 
         // get menu items list
-//        List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
-//        LOG.trace("Found in DB: carsItems --> " + carsItems);
-//
-//
-//        // put cars items list to the request
-//        request.setAttribute("carsItems", carsItems);
-//        LOG.trace("Set the request attribute: carsItems --> " + carsItems);
-//        HttpSession session = request.getSession(false);
-//        if (session != null) {
-//            session.invalidate();
-//        }
+        List<Cars> cars = MySqlCarsDAO.getInstance().findCars();
+        LOG.trace("Found in DB: menuItemsList --> " + cars);
+
+
+        // put menu items list to the request
+        request.setAttribute("menuItems", cars);
+        LOG.trace("Set the request attribute: menuItems --> " + cars);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
         LOG.debug("Command finished");
         return Path.PAGE_WELCOME;
 

@@ -1,11 +1,12 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
-import ua.nure.hrynko.SummaryTask4.Path;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+
+import ua.nure.hrynko.SummaryTask4.Path;
 
 /**
  * Logout command.

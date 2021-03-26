@@ -1,18 +1,20 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
-import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.DBManager;
-import ua.nure.hrynko.SummaryTask4.db.Role;
-import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUsersDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Users;
-import ua.nure.hrynko.SummaryTask4.exception.AppException;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+
+import org.apache.log4j.Logger;
+
+import ua.nure.hrynko.SummaryTask4.Path;
+import ua.nure.hrynko.SummaryTask4.db.DBManager;
+import ua.nure.hrynko.SummaryTask4.db.RoleEnum;
+import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUsersDAO;
+import ua.nure.hrynko.SummaryTask4.db.dto.Users;
+import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 /**
  * Login command.
@@ -48,22 +50,22 @@ public class LoginCommand extends Command {
             throw new AppException("Cannot find user with such login/password");
         }
 
-        Role userRole = Role.getRole(user);
+        RoleEnum userRole = RoleEnum.getRole(user);
         LOG.trace("userRole --> " + userRole);
 
         String forward = Path.PAGE_ERROR_PAGE;
 
-        if (userRole == Role.ADMIN) {
+        if (userRole == RoleEnum.ADMIN) {
             forward = Path.COMMAND_LIST_ADMIN;
         }
 
-        if (userRole == Role.CLIENT) {
+        if (userRole == RoleEnum.CLIENT) {
             forward = Path.COMMAND_LIST_MENU;
         }
 
-        if (userRole == Role.MANAGER) {
-            forward = Path.COMMAND_LIST_ORDERS;
-        }
+//        if (userRole == Role.MANAGER) {
+//            forward = Path.COMMAND_LIST_ORDERS;
+//        }
         session.setAttribute("user", user);
         LOG.trace("Set the session attribute: user --> " + user);
 

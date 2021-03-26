@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Admin</title>
-    <link href='./style/style2.css' rel='stylesheet' type='text/css'>
+    <link href='./style/style2.css' rel='stylesheet'type='text/css'>
 </head>
 <body>
 <div align='right'>

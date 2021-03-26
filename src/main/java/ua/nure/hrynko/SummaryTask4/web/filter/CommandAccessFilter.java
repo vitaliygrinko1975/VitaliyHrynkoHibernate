@@ -2,7 +2,7 @@ package ua.nure.hrynko.SummaryTask4.web.filter;
 
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.Role;
+import ua.nure.hrynko.SummaryTask4.db.RoleEnum;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +20,9 @@ public class CommandAccessFilter implements Filter {
 	private static final Logger LOG = Logger.getLogger(CommandAccessFilter.class);
 
 	// commands access	
-	private Map<Role, List<String>> accessMap = new HashMap<Role, List<String>>();
-	private List<String> commons = new ArrayList<String>();	
-	private List<String> outOfControl = new ArrayList<String>();
+	private Map<RoleEnum, List<String>> accessMap = new HashMap<>();
+	private List<String> commons = new ArrayList<>();
+	private List<String> outOfControl = new ArrayList<>();
 	
 	public void destroy() {
 		LOG.debug("Filter destruction starts");
@@ -66,7 +66,7 @@ public class CommandAccessFilter implements Filter {
 			return false;
 		}
 
-		Role userRole = (Role)session.getAttribute("userRole");
+		RoleEnum userRole = (RoleEnum)session.getAttribute("userRole");
 		if (userRole == null) {
 		return false;
 		}
@@ -80,9 +80,9 @@ public class CommandAccessFilter implements Filter {
 		LOG.debug("Filter initialization starts");
 		
 		// roles
-		accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("admin")));
-		accessMap.put(Role.CLIENT, asList(fConfig.getInitParameter("client")));
-		accessMap.put(Role.MANAGER, asList(fConfig.getInitParameter("manager")));
+		accessMap.put(RoleEnum.ADMIN, asList(fConfig.getInitParameter("admin")));
+		accessMap.put(RoleEnum.CLIENT, asList(fConfig.getInitParameter("client")));
+		//accessMap.put(RoleEnum.MANAGER, asList(fConfig.getInitParameter("manager")));
 		LOG.trace("Access map --> " + accessMap);
 
 		// commons
@@ -104,7 +104,7 @@ public class CommandAccessFilter implements Filter {
 	 * @return list of parameter values.
 	 */
 	private List<String> asList(String str) {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		StringTokenizer st = new StringTokenizer(str);
 		while (st.hasMoreTokens()) {
 			list.add(st.nextToken());

@@ -1,9 +1,9 @@
 package ua.nure.hrynko.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
-
 import java.util.Map;
 import java.util.TreeMap;
+
+import org.apache.log4j.Logger;
 
 /**
  * Holder for all commands.<br/>
@@ -36,10 +36,6 @@ public class CommandContainer {
 		commands.put("sortedDownName", new SortedCarDownNameCommand());
         commands.put("selectByClass", new SelectCarByClass());
 
-		// manager commands
-		commands.put("listOrders", new ListOrdersCommand());
-		commands.put("blockManagerCommand", new  BlockManagerCommand());
-		commands.put("unBlockManagerCommand", new  UnBlockManagerCommand());
 
 		// admin commands
 		commands.put("listAdmin", new ListAdminCommand());
@@ -49,8 +45,8 @@ public class CommandContainer {
 		commands.put("addPage", new AdminPageAddCarCommand());
 		commands.put("addCar", new AddCarCommand());
 		commands.put("pageUsers", new AdminPageUsers());
-		commands.put("addManager", new AddManagerCommand());
-		commands.put("adminPageAddManager", new AdminPageAddManagerCommand());
+		commands.put("addNewAdmin", new AddNewAdminCommand());
+		commands.put("adminPageAddNewAdmin", new AdminPageAddNewAdminCommand());
 
 		LOG.debug("Command container was successfully initialized");
 		LOG.trace("Number of commands --> " + commands.size());

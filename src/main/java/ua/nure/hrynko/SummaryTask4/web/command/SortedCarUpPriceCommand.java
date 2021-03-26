@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 
-import static java.util.Collections.sort;
+import static java.util.Collections.*;
 
 public class SortedCarUpPriceCommand extends Command {
 
@@ -28,22 +28,17 @@ public class SortedCarUpPriceCommand extends Command {
         LOG.debug("Command starts");
 
         // get cars items list
-//        List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
-//        LOG.trace("Found in DB: carsItem --> " + carsItems);
-//
-//        // sort cars by category
-//        sort(carsItems, new Comparator<Cars>() {
-//            public int compare(Cars o1, Cars o2) {
-//                return (int)(o1.getPrice() - o2.getPrice());
-//            }
-//        });
-//
-//        // put menu items list to the request
-//        request.setAttribute("carsItems", carsItems);
-//        LOG.trace("Set the request attribute: carsItems --> " + carsItems);
+        List<Cars> carsItems = MySqlCarsDAO.getInstance().findCars();
+        LOG.trace("Found in DB: carsItem --> " + carsItems);
+
+        // sort cars by category
+		sort(carsItems, (o1, o2) -> (int)(o1.getPrice() - o2.getPrice()));
+
+        // put cars items list to the request
+        request.setAttribute("carsItems", carsItems);
+        LOG.trace("Set the request attribute: carsItems --> " + carsItems);
 
         LOG.debug("Command finished");
         return Path.PAGE_LIST_CAR;
     }
 }
-
