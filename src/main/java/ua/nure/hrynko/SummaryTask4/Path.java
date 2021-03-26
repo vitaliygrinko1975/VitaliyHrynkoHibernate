@@ -26,7 +26,7 @@ public final class Path {
     public static final String PAGE_LIST_CAR_BY_CLASS = "/WEB-INF/jsp/client/list_cars_selected_by_class.jsp";
     // commands
     public static final String COMMAND_LIST_ADMIN= "/controller?command=listAdmin";
-    public static final String COMMAND_LIST_ADMIN_ADDCAR= "/controller?command=addPage";
+    public static final String COMMAND_LIST_ADMIN_ADD_CAR = "/controller?command=addPage";
     public static final String COMMAND_LIST_MENU = "/controller?command=listMenu";
     public static final String COMMAND_LIST_ORDERS = "/controller?command=listOrders";
 

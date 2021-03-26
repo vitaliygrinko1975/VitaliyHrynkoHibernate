@@ -2,7 +2,7 @@
 Header (top area). 
 ===========================================================================--%> 
 
-<%@ page import="ua.nure.hrynko.SummaryTask4.db.Role" %>
+<%@ page import="ua.nure.hrynko.SummaryTask4.db.RoleEnum" %>
 <%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
 

@@ -74,8 +74,8 @@
                             <button type='submit' name = 'Butt' value = '0' class='btn btn-primary btn-block btn-large'>ENTER</button>
                         </form>
                     </div>
-</div>
-</body>
+                </div>
+            </body>
 </html>
 
 
