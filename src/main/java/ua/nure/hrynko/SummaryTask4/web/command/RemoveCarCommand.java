@@ -22,7 +22,7 @@ public class RemoveCarCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
 
-        MySqlCarsDAO deletedCar = MySqlCarsDAO.getInstance();
+        MySqlCarsDAO deletedCar =  MySqlCarsDAO.getInstance();
 
         String id = request.getParameter("removeButt");
 
@@ -34,6 +34,7 @@ public class RemoveCarCommand extends Command {
         LOG.trace("Remove car to id: --> " + id);
 
         LOG.debug("Command finished");
+
         return Path.COMMAND_LIST_ADMIN;
     }
 

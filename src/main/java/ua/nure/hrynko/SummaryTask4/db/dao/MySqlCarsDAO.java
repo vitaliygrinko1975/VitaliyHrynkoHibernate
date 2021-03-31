@@ -9,19 +9,20 @@ import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.CarsDAO;
 import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import ua.nure.hrynko.SummaryTask4.exception.Messages;
-
+import org.hibernate.Transaction;
 import javax.persistence.Entity;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-//extends MySqlAbstractDAO implements CarsDAO
-public class MySqlCarsDAO  {
+
+public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
 
     private static final Logger LOG = Logger.getLogger(MySqlCarsDAO.class);
 
-//    public MySqlCarsDAO() {
-//        super(Cars.class, Cars.class.getAnnotation(Entity.class).name());
-//    }
+
+    public MySqlCarsDAO() {
+        super(Cars.class, Cars.class.getAnnotation(Entity.class).name());
+    }
 
 
     private static MySqlCarsDAO instance;
@@ -34,11 +35,9 @@ public class MySqlCarsDAO  {
     }
 
 
-    public void deleteCarToCarsDb(Integer id) throws DBException {
+    public void deleteCarToCarsDb(int id) throws DBException, NullPointerException {
 
-//        Cars car = sessionFactory.getCurrentSession().get(Cars.class, id);
-//        sessionFactory.getCurrentSession().delete(car);
-
+//        delete(getById(id));
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -58,10 +57,38 @@ public class MySqlCarsDAO  {
 
     }
 
-        public void updateCarToCarsDb(String id, String name, int price, String category) throws DBException {
-            PreparedStatement  stmt = null;
+    public List<Cars> findCars() throws DBException {
+//        try (Session session = sessionFactory.openSession()) {
+//            Query query = session.createQuery("from " + tableName);
+//            return query.list();
+
+            List<Cars> carsList = new ArrayList<>();
+            Statement stmt = null;
             ResultSet rs = null;
             Connection con = null;
+            try {
+                con = DBManager.getConnection();
+                stmt = con.createStatement();
+                rs = stmt.executeQuery("SELECT * FROM cars");
+                while (rs.next()) {
+                    carsList.add(extractCarsItem(rs));
+                }
+                con.commit();
+            } catch (SQLException ex) {
+                DBManager.rollback(con);
+                LOG.error(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
+                throw new DBException(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
+            } finally {
+                DBManager.close(con, stmt, rs);
+            }
+              return carsList;
+    }
+
+
+    public void updateCarToCarsDb(String id, String name, int price, String category) throws DBException {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Connection con = null;
             try {
                 con = DBManager.getConnection();
                 stmt = con.prepareStatement("UPDATE cars SET name=?, price=?, category=?"
@@ -183,33 +210,6 @@ public class MySqlCarsDAO  {
         return rez;
     }
 
-    public List<Cars> findCars() throws DBException {
-//        List<Cars> carsList = new ArrayList<>();
-//        carsList = getAll();
-//        return carsList;
-
-            List<Cars> carsList = new ArrayList<>();
-            Statement stmt = null;
-            ResultSet rs = null;
-            Connection con = null;
-            try {
-                con = DBManager.getConnection();
-                stmt = con.createStatement();
-                rs = stmt.executeQuery("SELECT * FROM cars");
-                while (rs.next()) {
-                    carsList.add(extractCarsItem(rs));
-                }
-                con.commit();
-            } catch (SQLException ex) {
-                DBManager.rollback(con);
-                LOG.error(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
-                throw new DBException(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
-            } finally {
-                DBManager.close(con, stmt, rs);
-            }
-              return carsList;
-}
-
     public List<Cars> findCarSortedUpByName() throws DBException {
         List<Cars> carSortedUp = new ArrayList<>();
         Statement stmt = null;
@@ -254,55 +254,55 @@ public class MySqlCarsDAO  {
         }
         return carsorteddown;
     }
-    //
-//
-//        /**
-//         * Returns cars items with given identifiers.
-//         *
-//         * @param ids
-//         *            Identifiers of cars items.
-//         * @return List of cars item entities.
-//         */
-//        public List<Cars> findCars(String[] ids) throws DBException {
-//            List<Cars> carsList = new ArrayList<>();
-//            Statement stmt = null;
-//            ResultSet rs = null;
-//            Connection con = null;
-//            try {
-//                con = DBManager.getConnection();
-//
-//                // create SQL query like "... id IN (1, 2, 7)"
-//                StringBuilder query = new StringBuilder(
-//                        "SELECT * FROM cars WHERE id IN (");
-//                for (String idAsString : ids) {
-//                    query.append(idAsString).append(',');
-//                }
-//                query.deleteCharAt(query.length() - 1);
-//                query.append(')');
-//
-//                stmt = con.createStatement();
-//                rs = stmt.executeQuery(query.toString());
-//                while (rs.next()) {
-//                    carsList.add(extractCarsItem(rs));
-//                }
-//            } catch (SQLException ex) {
-//                DBManager.rollback(con);
-//                throw new DBException(
-//                        Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS_BY_IDENTIFIERS, ex);
-//            } finally {
-//                DBManager.close(con, stmt, rs);
-//            }
-//            return carsList;
-//        }
-//
-//
-//        /**
-//         * Extracts a menu item from the result set.
-//         *
-//         * @param rs
-//         *            Result set from which a menu item entity will be extracted.
-//         * @return Menu item entity.
-//         */
+
+
+        /**
+         * Returns cars items with given identifiers.
+         *
+         * @param ids
+         *            Identifiers of cars items.
+         * @return List of cars item entities.
+         */
+        public List<Cars> findCars(String[] ids) throws DBException {
+            List<Cars> carsList = new ArrayList<>();
+            Statement stmt = null;
+            ResultSet rs = null;
+            Connection con = null;
+            try {
+                con = DBManager.getConnection();
+
+                // create SQL query like "... id IN (1, 2, 7)"
+                StringBuilder query = new StringBuilder(
+                        "SELECT * FROM cars WHERE id IN (");
+                for (String idAsString : ids) {
+                    query.append(idAsString).append(',');
+                }
+                query.deleteCharAt(query.length() - 1);
+                query.append(')');
+
+                stmt = con.createStatement();
+                rs = stmt.executeQuery(query.toString());
+                while (rs.next()) {
+                    carsList.add(extractCarsItem(rs));
+                }
+            } catch (SQLException ex) {
+                DBManager.rollback(con);
+                throw new DBException(
+                        Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS_BY_IDENTIFIERS, ex);
+            } finally {
+                DBManager.close(con, stmt, rs);
+            }
+            return carsList;
+        }
+
+
+        /**
+         * Extracts a menu item from the result set.
+         *
+         * @param rs
+         *            Result set from which a menu item entity will be extracted.
+         * @return Menu item entity.
+         */
     public Cars extractCarsItem(ResultSet rs) throws SQLException {
         Cars cars = new Cars();
         cars.setId(rs.getLong(Fields.ENTITY_ID));

@@ -19,6 +19,7 @@ public class LoginingCommand extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException, AppException {
+
         LOG.debug("Command starts");
 
         MySqlUsersDAO addedclient = MySqlUsersDAO.getInstance();

@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
 		LOG.trace("Forward address --> " + forward);
 
 		LOG.debug("Controller finished, now go to forward address --> " + forward);
-		
+
 		// go to forward
 		request.getRequestDispatcher(forward).forward(request, response);
 	}
