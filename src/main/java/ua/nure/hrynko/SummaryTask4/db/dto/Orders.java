@@ -18,17 +18,16 @@ public class Orders implements Serializable {
 	private Long id;
 
 	@NotNull
-	@Size(max = 256)
 	@Column(name = "bill", nullable = false)
 	private Integer bill;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private int userId;
+	private Users user;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "status_id", referencedColumnName = "id")
-	private int statusId;
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "status_id", referencedColumnName = "id")
+//	private int statusId;
 
 
 	public Long getId() {
@@ -47,26 +46,20 @@ public class Orders implements Serializable {
 		this.bill = bill;
 	}
 
-	public int getUserId() {
-		return userId;
+	public Users getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getStatusId() {
-		return statusId;
-	}
-
-	public void setStatusId(int statusId) {
-		this.statusId = statusId;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
-		return "Orders [bill=" + bill + ", userId=" + userId + ", statusId="
-				+ statusId + ", getId()=" + getId() + "]";
+		return "Orders{" +
+				"id=" + id +
+				", bill=" + bill +
+				", user=" + user +
+				'}';
 	}
-
 }

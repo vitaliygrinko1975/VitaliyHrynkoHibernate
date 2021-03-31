@@ -9,7 +9,6 @@ public class HibernateSessionFactoryUtil  {
     private static  SessionFactory sessionFactory;
 
     static {
-        try {
             Configuration configuration = new Configuration();
             configuration.addAnnotatedClass(Cars.class);
             configuration.addAnnotatedClass(Orders.class);
@@ -21,10 +20,6 @@ public class HibernateSessionFactoryUtil  {
                     applySettings(configuration.getProperties())
                     .build();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-
-        } catch (Throwable ex) {
-          //throw new ExceptionInInitializerError(ex);
-        }
    }
 
     public static SessionFactory getSessionFactory() {

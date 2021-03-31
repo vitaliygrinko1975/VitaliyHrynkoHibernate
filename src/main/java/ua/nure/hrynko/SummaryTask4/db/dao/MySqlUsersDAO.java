@@ -5,6 +5,7 @@ import ua.nure.hrynko.SummaryTask4.db.DBManager;
 import ua.nure.hrynko.SummaryTask4.db.Fields;
 import ua.nure.hrynko.SummaryTask4.db.Querys;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.UserDAO;
+import ua.nure.hrynko.SummaryTask4.db.dto.Roles;
 import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import ua.nure.hrynko.SummaryTask4.exception.Messages;
@@ -217,14 +218,16 @@ public class MySqlUsersDAO implements UserDAO {
      * @return User entity
      */
         public Users extractUser(ResultSet rs) throws SQLException {
-        Users user = new Users();
-        user.setId(rs.getLong(Fields.ENTITY_ID));
-        user.setLogin(rs.getString(Fields.USER_LOGIN));
-        user.setPassword(rs.getString(Fields.USER_PASSWORD));
-        user.setFirstName(rs.getString(Fields.USER_FIRST_NAME));
-        user.setLastName(rs.getString(Fields.USER_LAST_NAME));
-        user.setRoleId(rs.getInt(Fields.USER_ROLE_ID));
-        return user;
+            Users user = new Users();
+            user.setId(rs.getLong(Fields.ENTITY_ID));
+            user.setLogin(rs.getString(Fields.USER_LOGIN));
+            user.setPassword(rs.getString(Fields.USER_PASSWORD));
+            user.setFirstName(rs.getString(Fields.USER_FIRST_NAME));
+            user.setLastName(rs.getString(Fields.USER_LAST_NAME));
+            Long roleId = rs.getLong(Fields.USER_ROLE_ID);
+            Roles role = MySqlRolesDAO.getInstance().findRoleById(roleId);
+            user.setRole(role);
+            return user;
     }
 
 

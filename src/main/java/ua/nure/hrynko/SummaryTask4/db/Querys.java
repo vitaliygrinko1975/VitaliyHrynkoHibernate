@@ -13,6 +13,8 @@ public class Querys {
 
     public static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users WHERE id=?";
 
+    public static final String SQL_FIND_ROLE_BY_ID = "SELECT * FROM roles WHERE id=?";
+
     public static final String SQL_FIND_ALL_CARS_ITEMS = "SELECT * FROM cars";
 
     public static final String SQL_FIND_ORDERS_BY_STATUS_AND_USER = "SELECT * FROM orders WHERE status_id=? AND user_id=?";

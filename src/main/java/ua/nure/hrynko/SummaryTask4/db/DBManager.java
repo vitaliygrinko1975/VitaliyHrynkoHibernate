@@ -22,6 +22,7 @@ public final class DBManager {
 	// //////////////////////////////////////////////////////////
 
 	private static DBManager instance;
+	private static DataSource ds;
 
 	public static synchronized DBManager getInstance() throws DBException {
 		if (instance == null) {
@@ -35,7 +36,7 @@ public final class DBManager {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
 			// ST4DB - the name of data source
-			ds = (DataSource) envContext.lookup("jdbc/ST4DB");
+			ds = (DataSource) envContext.lookup("jdbc/st4db");
 			LOG.trace("Data source ==> " + ds);
 		} catch (NamingException ex) {
 			LOG.error(Messages.ERR_CANNOT_OBTAIN_DATA_SOURCE, ex);
@@ -43,7 +44,6 @@ public final class DBManager {
 		}
 	}
 
-	private static DataSource ds;
 
 	/**
 	 * Returns a DB connection from the Pool Connections. Before using this

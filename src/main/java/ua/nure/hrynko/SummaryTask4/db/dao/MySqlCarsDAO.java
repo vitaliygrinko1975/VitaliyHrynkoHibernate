@@ -2,9 +2,11 @@ package ua.nure.hrynko.SummaryTask4.db.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import ua.nure.hrynko.SummaryTask4.db.DBManager;
 import ua.nure.hrynko.SummaryTask4.db.Fields;
+import ua.nure.hrynko.SummaryTask4.db.HibernateSessionFactoryUtil;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.CarsDAO;
 import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
@@ -113,27 +115,36 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
 
 
         public void addCarToCarsDb(String name, int price, String category) throws DBException {
-            PreparedStatement  stmt = null;
-            ResultSet rs = null;
-            Connection con = null;
-            try {
-                con = DBManager.getConnection();
-                stmt = con.prepareStatement("INSERT INTO cars (name, price, category)  VALUE (?,?,?)");
-                stmt.setString(1, name);
-                stmt.setInt(2, price);
-                stmt.setString(3, category);
-                stmt.executeUpdate();
-                con.commit();
-                LOG.trace("add to SQL seccesful--> " );
-            } catch (SQLException ex) {
-                LOG.trace("ERRor--> " );
-                ex.printStackTrace();
-                DBManager.rollback(con);
-            }
-            finally {
-                DBManager.close(con, stmt, rs);
-            }
+//            PreparedStatement  stmt = null;
+//            ResultSet rs = null;
+//            Connection con = null;
+//            try {
+//                con = DBManager.getConnection();
+//                stmt = con.prepareStatement("INSERT INTO cars (name, price, category)  VALUE (?,?,?)");
+//                stmt.setString(1, name);
+//                stmt.setInt(2, price);
+//                stmt.setString(3, category);
+//                stmt.executeUpdate();
+//                con.commit();
+//                LOG.trace("add to SQL seccesful--> " );
+//            } catch (SQLException ex) {
+//                LOG.trace("ERRor--> " );
+//                ex.printStackTrace();
+//                DBManager.rollback(con);
+//            }
+//            finally {
+//                DBManager.close(con, stmt, rs);
+//            }
+            Cars cars = new Cars();
+            cars.setName(name);
+            cars.setCategory(category);
+            cars.setPrice(price);
 
+            Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+            Transaction t = session.getTransaction();
+            t.begin();
+            session.saveOrUpdate(cars);
+            t.commit();
         }
 
        public Cars findCarToCarsDb(long id) throws DBException {

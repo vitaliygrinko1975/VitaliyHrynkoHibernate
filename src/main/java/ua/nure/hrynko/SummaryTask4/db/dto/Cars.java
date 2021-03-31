@@ -27,7 +27,6 @@ public class Cars implements Serializable {
 	private String name;
 
 	@NotNull
-	@Size(max = 256)
 	@Column(name = "price", nullable = false)
 	private Integer price;
 

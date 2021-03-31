@@ -6,33 +6,37 @@ import java.io.Serializable;
 
 public class OrdersCars implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Long orderId;
+    private Orders order;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
-    private Long carId;
+    private Cars car;
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public Orders getOrder() {
+        return order;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public void setOrder(Orders order) {
+        this.order = order;
     }
 
-    public void setMenuId(Long menuId) {
-        this.carId = menuId;
+    public Cars getCar() {
+        return car;
     }
 
-    public Long getMenuId() {
-        return carId;
+    public void setCar(Cars car) {
+        this.car = car;
     }
 
     @Override
     public String toString() {
-        return "OrdersCars [orderId=" + orderId + ", menuId=" + carId +"]";
+        return "OrdersCars [orderId=" + order + ", menuId=" + car +"]";
 
     }
 

@@ -8,6 +8,7 @@ import ua.nure.hrynko.SummaryTask4.exception.AppException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 
 public class AddCarCommand extends Command {

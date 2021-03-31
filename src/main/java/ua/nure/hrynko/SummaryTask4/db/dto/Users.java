@@ -37,9 +37,9 @@ public class Users implements Serializable {
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "role_id", referencedColumnName = "id")
-	private int roleId;
+	private Roles role;
 
 
 	public Long getId() {
@@ -81,13 +81,13 @@ public class Users implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public int getRoleId() {
-		return roleId;
+
+	public Roles getRole() {
+		return role;
 	}
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRole(Roles role) {
+		this.role = role;
 	}
 
 	@Override
@@ -95,7 +95,7 @@ public class Users implements Serializable {
 		return "Users [login=" + login
 				+ ", firstName=" + firstName 
 				+ ", lastName=" + lastName
-				+ ", roleId=" + roleId + "]";
+				+ ", roleId=" + role + "]";
 	}
 	
 }
