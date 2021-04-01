@@ -29,7 +29,7 @@ public class RemoveCarCommand extends Command {
         LOG.trace("Request parameter: id --> " + id);
 
 
-        deletedCar.deleteCarToCarsDb(Integer.parseInt(id));
+        deletedCar.deleteCarToCarsDb(Long.parseLong(id));
 
         LOG.trace("Remove car to id: --> " + id);
 

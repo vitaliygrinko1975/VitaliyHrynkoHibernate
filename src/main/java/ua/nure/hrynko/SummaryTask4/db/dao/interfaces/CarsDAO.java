@@ -11,7 +11,7 @@ import java.util.List;
 public interface CarsDAO extends AbstractDAO {
 
 
-     void deleteCarToCarsDb(int id) throws DBException;
+     void deleteCarToCarsDb(long id) throws DBException;
 
 
      void updateCarToCarsDb(String id, String n, int p, String c) throws DBException;

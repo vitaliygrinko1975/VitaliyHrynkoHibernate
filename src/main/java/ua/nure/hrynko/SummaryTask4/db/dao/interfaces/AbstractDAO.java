@@ -9,7 +9,7 @@ public interface AbstractDAO<T>{
 
     void delete(T obj);
 
-    T getById(int id);
+    T getById(long id);
 
     List<T> getAll();
 }

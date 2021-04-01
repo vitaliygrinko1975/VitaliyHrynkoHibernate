@@ -13,6 +13,7 @@ import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import ua.nure.hrynko.SummaryTask4.exception.Messages;
 import org.hibernate.Transaction;
 import javax.persistence.Entity;
+import javax.transaction.Transactional;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,28 +38,29 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
     }
 
 
-    public void deleteCarToCarsDb(int id) throws DBException, NullPointerException {
+    @Override
+    public void deleteCarToCarsDb(long id) throws DBException, NullPointerException {
+        delete(getById(id));
 
-//        delete(getById(id));
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Connection con = null;
-        try {
-            con = DBManager.getConnection();
-            stmt = con.prepareStatement(
-                    "DELETE FROM cars WHERE id = ?");
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-            con.commit();
-        } catch (SQLException ex) {
-            DBManager.rollback(con);
-        } finally {
-            DBManager.close(con, stmt, rs);
-        }
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        Connection con = null;
+//        try {
+//            con = DBManager.getConnection();
+//            stmt = con.prepareStatement(
+//                    "DELETE FROM cars WHERE id = ?");
+//            stmt.setInt(1, id);
+//            stmt.executeUpdate();
+//            con.commit();
+//        } catch (SQLException ex) {
+//            DBManager.rollback(con);
+//        } finally {
+//            DBManager.close(con, stmt, rs);
+//        }
 
     }
 
+    @Override
     public List<Cars> findCars() throws DBException {
 //        try (Session session = sessionFactory.openSession()) {
 //            Query query = session.createQuery("from " + tableName);
@@ -86,7 +88,7 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
               return carsList;
     }
 
-
+    @Override
     public void updateCarToCarsDb(String id, String name, int price, String category) throws DBException {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -113,28 +115,8 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
 
         }
 
-
-        public void addCarToCarsDb(String name, int price, String category) throws DBException {
-//            PreparedStatement  stmt = null;
-//            ResultSet rs = null;
-//            Connection con = null;
-//            try {
-//                con = DBManager.getConnection();
-//                stmt = con.prepareStatement("INSERT INTO cars (name, price, category)  VALUE (?,?,?)");
-//                stmt.setString(1, name);
-//                stmt.setInt(2, price);
-//                stmt.setString(3, category);
-//                stmt.executeUpdate();
-//                con.commit();
-//                LOG.trace("add to SQL seccesful--> " );
-//            } catch (SQLException ex) {
-//                LOG.trace("ERRor--> " );
-//                ex.printStackTrace();
-//                DBManager.rollback(con);
-//            }
-//            finally {
-//                DBManager.close(con, stmt, rs);
-//            }
+        @Override
+        public void addCarToCarsDb(String name, int price, String category) {
             Cars cars = new Cars();
             cars.setName(name);
             cars.setCategory(category);
@@ -143,11 +125,19 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
             Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
             Transaction t = session.getTransaction();
             t.begin();
-            session.saveOrUpdate(cars);
+            try
+            {
+                session.saveOrUpdate(cars);
+            }
+            catch (Exception e)
+            {
+                t.rollback();
+            }
             t.commit();
         }
 
-       public Cars findCarToCarsDb(long id) throws DBException {
+        @Override
+        public Cars findCarToCarsDb(long id) throws DBException {
            Cars Item = null;
            PreparedStatement pstmt = null;
            ResultSet rs = null;

@@ -45,7 +45,7 @@ public abstract class MySqlAbstractDAO <T> implements AbstractDAO<T> {
         }
 
         @Override
-        public T getById(int id) {
+        public T getById(long id) {
             try (Session session = sessionFactory.openSession()) {
                 return (T) session.get(aClass, id);
             }
