@@ -23,7 +23,7 @@ public class AdminUpdateCarCommand extends Command {
 
         MySqlCarsDAO updatedCar = MySqlCarsDAO.getInstance();
 
-        String id = request.getParameter("carForUpdateButt");
+       long id = Long.parseLong(request.getParameter("carForUpdateButt"));
 
 
         LOG.trace("Request parameter: id --> " + id);

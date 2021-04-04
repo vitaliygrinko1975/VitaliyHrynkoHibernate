@@ -14,7 +14,7 @@ public interface CarsDAO extends AbstractDAO {
      void deleteCarToCarsDb(long id) throws DBException;
 
 
-     void updateCarToCarsDb(String id, String n, int p, String c) throws DBException;
+     void updateCarToCarsDb(long id, String n, int p, String c) throws DBException;
 
 
      void addCarToCarsDb(String n, int p, String c) throws DBException;

@@ -1,6 +1,7 @@
 package ua.nure.hrynko.SummaryTask4.db.dao;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -39,7 +40,7 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
 
 
     @Override
-    public void deleteCarToCarsDb(long id) throws DBException, NullPointerException {
+    public void deleteCarToCarsDb(long id) throws  NullPointerException {
         delete(getById(id));
 
 //        PreparedStatement stmt = null;
@@ -61,62 +62,83 @@ public class MySqlCarsDAO extends MySqlAbstractDAO implements CarsDAO {
     }
 
     @Override
-    public List<Cars> findCars() throws DBException {
-//        try (Session session = sessionFactory.openSession()) {
-//            Query query = session.createQuery("from " + tableName);
-//            return query.list();
+    public List<Cars> findCars()  {
+        try (Session session = sessionFactory.openSession()) {
+            Query query = session.createQuery("from " + tableName);
+            return query.list();
 
-            List<Cars> carsList = new ArrayList<>();
-            Statement stmt = null;
-            ResultSet rs = null;
-            Connection con = null;
-            try {
-                con = DBManager.getConnection();
-                stmt = con.createStatement();
-                rs = stmt.executeQuery("SELECT * FROM cars");
-                while (rs.next()) {
-                    carsList.add(extractCarsItem(rs));
-                }
-                con.commit();
-            } catch (SQLException ex) {
-                DBManager.rollback(con);
-                LOG.error(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
-                throw new DBException(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
-            } finally {
-                DBManager.close(con, stmt, rs);
-            }
-              return carsList;
+//            List<Cars> carsList = new ArrayList<>();
+//            Statement stmt = null;
+//            ResultSet rs = null;
+//            Connection con = null;
+//            try {
+//                con = DBManager.getConnection();
+//                stmt = con.createStatement();
+//                rs = stmt.executeQuery("SELECT * FROM cars");
+//                while (rs.next()) {
+//                    carsList.add(extractCarsItem(rs));
+//                }
+//                con.commit();
+//            } catch (SQLException ex) {
+//                DBManager.rollback(con);
+//                LOG.error(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
+//                throw new DBException(Messages.ERR_CANNOT_OBTAIN_CARS_ITEMS, ex);
+//            } finally {
+//                DBManager.close(con, stmt, rs);
+//            }
+//              return carsList;
+        }
     }
-
     @Override
-    public void updateCarToCarsDb(String id, String name, int price, String category) throws DBException {
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Connection con = null;
-            try {
-                con = DBManager.getConnection();
-                stmt = con.prepareStatement("UPDATE cars SET name=?, price=?, category=?"
-                        + "	WHERE id=? ");
-                stmt.setString(1, name);
-                stmt.setInt(2, price);
-                stmt.setString(3, category);
-                stmt.setString(4, id);
-                stmt.executeUpdate();
-                con.commit();
-                LOG.trace("update to SQL seccesful--> " );
-            } catch (SQLException ex) {
-                LOG.trace("ERRor--> " );
-                ex.printStackTrace();
-                DBManager.rollback(con);
-            }
-            finally {
-                DBManager.close(con, stmt, rs);
-            }
+    public void updateCarToCarsDb(long id, String name, int price, String category){
+        Cars cars = new Cars();
+        cars.setId(id);
+        cars.setName(name);
+        cars.setCategory(category);
+        cars.setPrice(price);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+        Transaction t = session.getTransaction();
+        t.begin();
+        try
+        {
+            session.saveOrUpdate(cars);
+        }
+        catch (Exception e)
+        {
+            t.rollback();
+        }
+        t.commit();
+
+
+
+
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        Connection con = null;
+//            try {
+//                con = DBManager.getConnection();
+//                stmt = con.prepareStatement("UPDATE cars SET name=?, price=?, category=?"
+//                        + "	WHERE id=? ");
+//                stmt.setString(1, name);
+//                stmt.setInt(2, price);
+//                stmt.setString(3, category);
+//                stmt.setString(4, id);
+//                stmt.executeUpdate();
+//                con.commit();
+//                LOG.trace("update to SQL seccesful--> " );
+//            } catch (SQLException ex) {
+//                LOG.trace("ERRor--> " );
+//                ex.printStackTrace();
+//                DBManager.rollback(con);
+//            }
+//            finally {
+//                DBManager.close(con, stmt, rs);
+//            }
 
         }
 
         @Override
-        public void addCarToCarsDb(String name, int price, String category) {
+        public void addCarToCarsDb(String name, int price, String category){
             Cars cars = new Cars();
             cars.setName(name);
             cars.setCategory(category);
