@@ -15,7 +15,7 @@ import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 /**
- * Lists menu items.
+ * Lists cars items.
  */
 public class ListCarCommand extends Command {
 

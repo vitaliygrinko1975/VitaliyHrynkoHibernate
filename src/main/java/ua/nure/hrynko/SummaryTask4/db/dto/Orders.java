@@ -2,7 +2,6 @@ package ua.nure.hrynko.SummaryTask4.db.dto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -23,12 +22,10 @@ public class Orders implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
+
 	private Users user;
 
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "status_id", referencedColumnName = "id")
-//	private int statusId;
-
+	private Long userId;
 
 	public Long getId() {
 		return id;
@@ -46,20 +43,35 @@ public class Orders implements Serializable {
 		this.bill = bill;
 	}
 
-	public Users getUser() {
-		return user;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser(Users user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
+
+
+//	public Users getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(Users user) {
+//		this.user = user;
+//	}
 
 	@Override
 	public String toString() {
-		return "Orders{" +
-				"id=" + id +
-				", bill=" + bill +
-				", user=" + user +
-				'}';
+		return "Order [bill=" + bill + ", userId=" + userId + ", getId()=" + getId() + "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Orders{" +
+//				"id=" + id +
+//				", bill=" + bill +
+//				", user=" + user +
+//				'}';
+//	}
 }

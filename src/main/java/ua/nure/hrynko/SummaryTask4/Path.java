@@ -11,14 +11,13 @@ public final class Path {
     public static final String PAGE_LOGIN = "/login.jsp";
     public static final String PAGE_ERROR_PAGE = "/WEB-INF/jsp/error_page.jsp";
     public static final String PAGE_LIST_ADMIN = "/WEB-INF/jsp/admin/admin_page.jsp";
-    public static final String PAGE_LIST_ADMIN_ADDCAR = "/WEB-INF/jsp/admin/admin_page_addcar.jsp";
-    public static final String PAGE_LIST_ADMIN_UPDATECAR = "/WEB-INF/jsp/admin/admin_page_updatecar.jsp";
+    public static final String PAGE_LIST_ADMIN_ADD_CAR = "/WEB-INF/jsp/admin/admin_page_add_car.jsp";
+    public static final String PAGE_LIST_ADMIN_UPDATE_CAR = "/WEB-INF/jsp/admin/admin_page_update_car.jsp";
     public static final String PAGE_LIST_MENU = "/WEB-INF/jsp/client/list_menu.jsp";
     public static final String PAGE_LIST_ORDERS = "/WEB-INF/jsp/manager/manager_page.jsp";
     public static final String PAGE_SETTINGS = "/WEB-INF/jsp/settings.jsp";
     public static final String PAGE_LIST_CAR = "/WEB-INF/jsp/client/list_car.jsp";
-    public static final String PAGE_LIST_CLIENT_MAKEORDERS = "/WEB-INF/jsp/client/list_car_order.jsp";
-    public static final String PAGE_LIST_MANAGER = "/WEB-INF/jsp/manager/manager_page.jsp";
+    public static final String PAGE_LIST_CLIENT_MAKE_ORDERS = "/WEB-INF/jsp/client/list_car_order.jsp";
     public static final String PAGE_LIST_CLIENT_TO_PAY = "/WEB-INF/jsp/client/client_page_to_pay.jsp";
     public static final String PAGE_LOGINING = "/WEB-INF/jsp/client/logining_page.jsp";
     public static final String PAGE_ADMIN_USERS = "/WEB-INF/jsp/admin/admin_page_users.jsp";

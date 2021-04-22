@@ -77,9 +77,9 @@ CREATE TABLE orders(
 );
 
 
-INSERT INTO orders VALUES(DEFAULT, 0, 0);
--- bill = 0; user_id=2; status_id=1
-INSERT INTO orders VALUES(DEFAULT, 0, 1);
+INSERT INTO orders VALUES(DEFAULT, 1, 1);
+-- bill = 1; user_id=1
+INSERT INTO orders VALUES(DEFAULT, 2, 1);
 
 -- --------------------------------------------------------------
 -- MENU
@@ -108,12 +108,9 @@ CREATE TABLE orders_cars(
 );
 
 INSERT INTO orders_cars VALUES(1, 1);
-INSERT INTO orders_cars VALUES(1, 7);
-INSERT INTO orders_cars VALUES(1, 5);
-
-INSERT INTO orders_cars VALUES(2, 1);
-INSERT INTO orders_cars VALUES(2, 7);
-
+INSERT INTO orders_cars VALUES(2, 2);
+INSERT INTO orders_cars VALUES(3, 3);
+INSERT INTO orders_cars VALUES(4, 4);
 -- --------------------------------------------------------------
 -- test database:
 -- --------------------------------------------------------------

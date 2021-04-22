@@ -77,7 +77,7 @@ public final class DBManager {
 	 * @return User entity.
 	 * @throws DBException
 	 */
-    public boolean checkforlogin(String loginclient) throws DBException {
+    public boolean checkforlogin(String loginClient) throws DBException {
         List<Users> usersList = new ArrayList<Users>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -85,7 +85,7 @@ public final class DBManager {
         try {
             con = getConnection();
             pstmt = con.prepareStatement(("SELECTE login FROM users WHERE login = ?"));
-            pstmt.setString(1, loginclient);
+            pstmt.setString(1, loginClient);
             while (rs.next()) {return true;}
             con.commit();
         } catch (SQLException ex) {

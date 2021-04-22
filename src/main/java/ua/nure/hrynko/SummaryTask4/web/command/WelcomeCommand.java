@@ -23,24 +23,6 @@ public class WelcomeCommand extends Command {
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws IOException, ServletException, AppException {
 
-        LOG.debug("Command starts");
-
-        // get menu items list
-        List<Cars> cars = MySqlCarsDAO.getInstance().findCars();
-        LOG.trace("Found in DB: menuItemsList --> " + cars);
-
-
-        // put menu items list to the request
-        request.setAttribute("menuItems", cars);
-        LOG.trace("Set the request attribute: menuItems --> " + cars);
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        LOG.debug("Command finished");
         return Path.PAGE_WELCOME;
-
-
-
     }
 }

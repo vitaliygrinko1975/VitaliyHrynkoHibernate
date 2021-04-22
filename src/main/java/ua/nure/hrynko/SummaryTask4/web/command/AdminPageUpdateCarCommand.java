@@ -24,14 +24,14 @@ public class AdminPageUpdateCarCommand extends Command {
         LOG.trace("Request parameter: id --> " + id);
 
 
-        updatedCar.findCarToCarsDb(Integer.parseInt(id));
+        //updatedCar.findCarToCarsDb(Integer.parseInt(id));
 
         LOG.trace("Update car to id: --> " + id);
 
-        request.setAttribute("car", updatedCar.findCarToCarsDb(Integer.parseInt(id)));
+        request.setAttribute("car", updatedCar.findCarToCarsDb(Long.parseLong(id)));
 
         LOG.debug("UpdateCarCommand finished");
-       return Path.PAGE_LIST_ADMIN_UPDATECAR;
+       return Path.PAGE_LIST_ADMIN_UPDATE_CAR;
     }
 
 }

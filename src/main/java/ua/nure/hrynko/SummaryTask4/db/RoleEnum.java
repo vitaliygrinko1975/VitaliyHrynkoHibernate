@@ -11,7 +11,7 @@ public enum RoleEnum {
 	ADMIN, CLIENT;
 	
 	public static RoleEnum getRole(Users user) {
-		int roleId = user.getRole().getId().intValue();
+ 		int roleId = user.getRole().getId().intValue();
 		return RoleEnum.values()[roleId];
 	}
 	

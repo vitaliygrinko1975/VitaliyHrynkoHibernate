@@ -12,26 +12,16 @@ public interface UserDAO {
 
      void addClientToUsersDb(String login, String password, String name, String lastname) throws DBException;
 
-     void addManagerToUsersDb(String login, String password, String name, String lastname) throws DBException;
+     void addAdminToUsersDb(String login, String password, String name, String lastname) throws DBException;
 
-     void deleteUser(Integer id) throws DBException;
+    // void deleteUser(Integer id) throws DBException;
 
-     Users findUser(long id) throws DBException;
-
+   //  Users findUser(long id) throws DBException;
 
      Users findUserByLogin(String login) throws DBException;
 
-     void updateUser(Users user) throws DBException;
+     List<Users> findAllUsers() throws DBException;
 
-
-     void updateUser(Connection con, Users user) throws SQLException;
-
-
-
-     List<Users> findallusers() throws DBException;
-
-
-
-    Users extractUser(ResultSet rs) throws SQLException;
+    /// Users extractUser(ResultSet rs) throws SQLException;
 
 }

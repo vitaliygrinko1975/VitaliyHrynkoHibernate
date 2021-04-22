@@ -19,7 +19,7 @@ public class AdminPageUsers extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
         LOG.debug("Command starts");
-        List<Users> userList = MySqlUsersDAO.getInstance().findallusers();
+        List<Users> userList = MySqlUsersDAO.getInstance().findAllUsers();
         LOG.trace("Found in DB: userList --> " + userList);
 
 

@@ -23,23 +23,22 @@ public class SelectCarByClass extends Command {
             throws IOException, ServletException, AppException {
         LOG.debug("Command starts");
 
-        MySqlCarsDAO selectedByClass = MySqlCarsDAO.getInstance();
+        MySqlCarsDAO selectedByCategory = MySqlCarsDAO.getInstance();
 
         String categoryCars = request.getParameter("selectClass");
 
-        if  (selectedByClass.thereIsSuchCategory(categoryCars)) {
-            List<Cars> carsItems = selectedByClass.selectCarsByClass(categoryCars);
+            List<Cars> carsItems = selectedByCategory.selectCarsByCategory(categoryCars);
 
             LOG.trace("Found in DB: menuItemsList --> " + carsItems);
 
 
-            // put menu items list to the request
+            // put cars items list to the request
             request.setAttribute("carsItems", carsItems);
             LOG.trace("Set the request attribute:carsItems --> " + carsItems);
 
             LOG.debug("Command finished");
 
-        }return Path.PAGE_LIST_CAR_BY_CLASS;
+            return Path.PAGE_LIST_CAR_BY_CLASS;
     }
 }
 

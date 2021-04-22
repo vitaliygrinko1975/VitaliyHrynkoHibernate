@@ -6,9 +6,7 @@ import ua.nure.hrynko.SummaryTask4.db.Fields;
 import ua.nure.hrynko.SummaryTask4.db.Querys;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.RolesDAO;
 import ua.nure.hrynko.SummaryTask4.db.dto.Roles;
-import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
-import ua.nure.hrynko.SummaryTask4.exception.Messages;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -21,14 +21,14 @@ public class LogoutCommand extends Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		LOG.debug("Command starts");
+		LOG.debug("LogoutCommand starts");
 		
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			session.invalidate();
 		}
 
-		LOG.debug("Command finished");
+		LOG.debug("LogoutCommand finished");
 		return Path.PAGE_LOGIN;
 	}
 

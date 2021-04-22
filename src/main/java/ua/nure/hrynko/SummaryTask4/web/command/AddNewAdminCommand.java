@@ -39,7 +39,7 @@ public class AddNewAdminCommand extends Command {
 
         LOG.trace("Request parameter: lastname --> " + lastname);
 
-        addedManager.addManagerToUsersDb(login,password,name,lastname);
+        addedManager.addAdminToUsersDb(login,password,name,lastname);
 
         LOG.trace("add manager command : --> " );
 

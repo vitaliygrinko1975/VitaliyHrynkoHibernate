@@ -14,10 +14,9 @@ public class LoginingPageCommand extends Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        LOG.debug("Command starts");
+        LOG.debug("LoginingPageCommand starts");
 
-        LOG.debug("Command finished");
-
+        LOG.debug("LoginingPageCommand finished");
         return Path.PAGE_LOGINING;
     }
 

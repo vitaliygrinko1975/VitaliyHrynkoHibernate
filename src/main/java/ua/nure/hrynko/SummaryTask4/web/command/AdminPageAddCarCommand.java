@@ -18,7 +18,7 @@ public class AdminPageAddCarCommand extends Command {
         LOG.debug("Command starts");
 
         LOG.debug("Command finished");
-        return Path.PAGE_LIST_ADMIN_ADDCAR;
+        return Path.PAGE_LIST_ADMIN_ADD_CAR;
     }
 
 }

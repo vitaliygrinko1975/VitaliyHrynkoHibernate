@@ -32,6 +32,6 @@ public class MakeOrdersPageCommand extends Command {
 
         LOG.debug("MakeOrdersPageCommand finished");
 
-        return Path.PAGE_LIST_CLIENT_MAKEORDERS;
+        return Path.PAGE_LIST_CLIENT_MAKE_ORDERS;
     }
 }

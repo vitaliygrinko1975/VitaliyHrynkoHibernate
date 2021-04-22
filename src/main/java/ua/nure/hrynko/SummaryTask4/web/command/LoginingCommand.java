@@ -22,7 +22,7 @@ public class LoginingCommand extends Command {
 
         LOG.debug("Command starts");
 
-        MySqlUsersDAO addedclient = MySqlUsersDAO.getInstance();
+        MySqlUsersDAO addedСlient = MySqlUsersDAO.getInstance();
 
         String login = request.getParameter("addLoginClient");
 
@@ -41,14 +41,14 @@ public class LoginingCommand extends Command {
         LOG.trace("Request parameter: lastname --> " + lastname);
 
         //if (DBManager.getInstance().checkforlogin(login)) {
-            addedclient.addClientToUsersDb(login, password, name, lastname);
+            addedСlient.addClientToUsersDb(login, password, name, lastname);
        // }
 
         LOG.trace("add user : --> ");
 
         LOG.debug("Command finished");
 
-        return Path.COMMAND_LIST_MENU;
+        return Path.PAGE_LOGIN;
     }
 
 }
