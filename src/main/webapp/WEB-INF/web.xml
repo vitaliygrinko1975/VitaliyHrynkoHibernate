@@ -89,14 +89,7 @@
     <servlet-name>Controller</servlet-name>
   </filter-mapping>
 
-  <!--============================================================
-      Context listener
-  =============================================================-->
-  <listener>
-    <listener-class>ua.nure.hrynko.SummaryTask4.web.listener.ContextListener</listener-class>
-  </listener>
-
-  <!--============================================================
+   <!--============================================================
       Error page
   =============================================================-->
   <error-page>

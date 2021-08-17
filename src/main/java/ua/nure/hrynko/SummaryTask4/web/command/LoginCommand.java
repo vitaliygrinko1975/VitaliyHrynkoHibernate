@@ -50,7 +50,7 @@ public class LoginCommand extends Command {
             throw new AppException("Cannot find user with such login/password");
         }
 
-        RoleEnum userRole = RoleEnum.getRole(user);
+        RoleEnum userRole = RoleEnum.getRoleEnum(user);
         LOG.trace("userRole --> " + userRole);
 
         String forward = Path.PAGE_ERROR_PAGE;
@@ -63,7 +63,7 @@ public class LoginCommand extends Command {
             forward = Path.COMMAND_LIST_MENU;
         }
 
-//        if (userRole == Role.MANAGER) {
+//        if (userRole == RoleEnum.MANAGER) {
 //            forward = Path.COMMAND_LIST_ORDERS;
 //        }
         session.setAttribute("user", user);

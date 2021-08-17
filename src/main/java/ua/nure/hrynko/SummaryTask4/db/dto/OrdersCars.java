@@ -36,7 +36,7 @@ public class OrdersCars implements Serializable {
 
     @Override
     public String toString() {
-        return "OrdersCars [orderId=" + order + ", carId=" + car +"]";
+        return "OrdersCars [orderId=" + order.getId() + ", carId=" + car.getId() +"]";
 
     }
 

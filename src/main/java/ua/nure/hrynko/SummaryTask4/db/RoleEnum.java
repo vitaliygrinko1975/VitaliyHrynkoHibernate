@@ -10,8 +10,9 @@ import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 public enum RoleEnum {
 	ADMIN, CLIENT;
 	
-	public static RoleEnum getRole(Users user) {
- 		int roleId = user.getRole().getId().intValue();
+	public static RoleEnum getRoleEnum(Users user) {
+ 		//int roleId = user.getRole().getId();
+		int roleId = user.getRoleId();
 		return RoleEnum.values()[roleId];
 	}
 	

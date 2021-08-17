@@ -22,6 +22,5 @@ public interface UserDAO {
 
      List<Users> findAllUsers() throws DBException;
 
-    /// Users extractUser(ResultSet rs) throws SQLException;
 
 }

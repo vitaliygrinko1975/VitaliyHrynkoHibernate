@@ -7,11 +7,16 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import ua.nure.hrynko.SummaryTask4.db.HibernateSessionFactoryUtil;
+import ua.nure.hrynko.SummaryTask4.db.RoleEnum;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.UserDAO;
+//import ua.nure.hrynko.SummaryTask4.db.dto.Roles;
+import ua.nure.hrynko.SummaryTask4.db.dto.Roles;
 import ua.nure.hrynko.SummaryTask4.db.dto.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -34,7 +39,7 @@ public class MySqlUsersDAO extends MySqlAbstractDAO implements UserDAO {
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setId(1L);
+        user.setRoleId(1);
         Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.getTransaction();
         t.begin();
@@ -55,7 +60,7 @@ public class MySqlUsersDAO extends MySqlAbstractDAO implements UserDAO {
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setId(0L);
+        user.setRoleId(0);
         Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.getTransaction();
         t.begin();

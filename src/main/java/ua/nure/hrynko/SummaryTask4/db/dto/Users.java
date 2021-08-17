@@ -5,6 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
+
 
 /**
  * User entity.
@@ -15,7 +17,7 @@ public class Users implements Serializable {
 	private static final long serialVersionUID = -6889036256149495388L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 
 	@NotNull
 	@Size(max = 256)
@@ -38,15 +40,24 @@ public class Users implements Serializable {
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "role_id", referencedColumnName = "id")
-	private Roles role;
+
+	@NotNull
+	@Column(name = "role_id", nullable = false)
+	private int roleId;
+
+//	@ManyToOne (optional=false, cascade=CascadeType.ALL)
+//	@JoinColumn (name="role_id")
+//	private Roles role;
+
+//	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "role_id", referencedColumnName = "id")
+//	private Roles role;
 
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -80,21 +91,24 @@ public class Users implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Roles getRole() {
-		return role;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setRole(Roles role) {
-		this.role = role;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
+//	public Roles getRole() {return role;}
+//	public void setRole(Roles roles) {this.role = role;}
 
-	@Override
+
+    @Override
 	public String toString() {
 		return "Users [login=" + login
 				+ ", firstName=" + firstName 
 				+ ", lastName=" + lastName
-				+ ", roleId=" + role.getId()+ "]";
+				+ ", roleId="+ roleId+ "]";
 	}
-	
+
 }

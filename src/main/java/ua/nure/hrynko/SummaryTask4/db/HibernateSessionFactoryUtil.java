@@ -13,7 +13,6 @@ public class HibernateSessionFactoryUtil  {
             configuration.addAnnotatedClass(Cars.class);
             configuration.addAnnotatedClass(Orders.class);
             configuration.addAnnotatedClass(OrdersCars.class);
-            configuration.addAnnotatedClass(Roles.class);
             configuration.addAnnotatedClass(Users.class);
             configuration.configure();
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().

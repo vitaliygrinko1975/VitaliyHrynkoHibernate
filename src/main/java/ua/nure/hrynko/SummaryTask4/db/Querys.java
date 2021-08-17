@@ -19,7 +19,7 @@ public class Querys {
 
     public static final String SQL_FIND_ORDERS_BY_STATUS_AND_USER = "SELECT * FROM orders WHERE status_id=? AND user_id=?";
 
-    public static final String SQL_FIND_MENU_ITEMS_BY_ORDER = "select * from cars where id in (select menu_id from orders_menu where order_id=?)";
+    public static final String SQL_FIND_MENU_ITEMS_BY_ORDER = "select * from cars where id in (select cars_id from orders_cars where order_id=?)";
 
     public static final String SQL_FIND_ORDERS_BY_STATUS = "SELECT * FROM orders WHERE status_id=?";
 

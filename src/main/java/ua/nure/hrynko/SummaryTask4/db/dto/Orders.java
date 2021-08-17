@@ -43,35 +43,35 @@ public class Orders implements Serializable {
 		this.bill = bill;
 	}
 
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-
-//	public Users getUser() {
-//		return user;
+//	public Long getUserId() {
+//		return userId;
 //	}
 //
-//	public void setUser(Users user) {
-//		this.user = user;
+//	public void setUserId(Long userId) {
+//		this.userId = userId;
 //	}
 
-	@Override
-	public String toString() {
-		return "Order [bill=" + bill + ", userId=" + userId + ", getId()=" + getId() + "]";
+
+	public Users getUser() {
+		return user;
 	}
 
+	public void setUser(Users user) {
+		this.user = user;
+	}
 
 //	@Override
 //	public String toString() {
-//		return "Orders{" +
-//				"id=" + id +
-//				", bill=" + bill +
-//				", user=" + user +
-//				'}';
+//		return "Order [bill=" + bill + ", userId=" + userId + ", getId()=" + getId() + "]";
 //	}
+
+
+	@Override
+	public String toString() {
+		return "Orders{" +
+				"id=" + id +
+				", bill=" + bill +
+				", user=" + user +
+				'}';
+	}
 }

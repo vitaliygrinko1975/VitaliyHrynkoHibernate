@@ -27,7 +27,7 @@
             <td>Password</td>
             <td>Name</td>
             <td>Lastname</td>
-            <td>Roleid</td>
+            <td>RoleId</td>
         </tr>
         <c:set var="k" value="0"/>
         <c:forEach var="user" items="${userList}">
@@ -37,7 +37,7 @@
                 <td>${user.password}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <td>${user.getRole().getId()}</td>
+                <td>${user.roleId}</td>
             </tr>
         </c:forEach>
     </table>
