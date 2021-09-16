@@ -14,10 +14,6 @@ public interface UserDAO {
 
      void addAdminToUsersDb(String login, String password, String name, String lastname) throws DBException;
 
-    // void deleteUser(Integer id) throws DBException;
-
-   //  Users findUser(long id) throws DBException;
-
      Users findUserByLogin(String login) throws DBException;
 
      List<Users> findAllUsers() throws DBException;

@@ -13,8 +13,6 @@ public final class Path {
     public static final String PAGE_LIST_ADMIN = "/WEB-INF/jsp/admin/admin_page.jsp";
     public static final String PAGE_LIST_ADMIN_ADD_CAR = "/WEB-INF/jsp/admin/admin_page_add_car.jsp";
     public static final String PAGE_LIST_ADMIN_UPDATE_CAR = "/WEB-INF/jsp/admin/admin_page_update_car.jsp";
-    public static final String PAGE_LIST_MENU = "/WEB-INF/jsp/client/list_menu.jsp";
-    public static final String PAGE_LIST_ORDERS = "/WEB-INF/jsp/manager/manager_page.jsp";
     public static final String PAGE_SETTINGS = "/WEB-INF/jsp/settings.jsp";
     public static final String PAGE_LIST_CAR = "/WEB-INF/jsp/client/list_car.jsp";
     public static final String PAGE_LIST_CLIENT_MAKE_ORDERS = "/WEB-INF/jsp/client/list_car_order.jsp";
@@ -27,6 +25,6 @@ public final class Path {
     public static final String COMMAND_LIST_ADMIN= "/controller?command=listAdmin";
     public static final String COMMAND_LIST_ADMIN_ADD_CAR = "/controller?command=addPage";
     public static final String COMMAND_LIST_MENU = "/controller?command=listMenu";
-    public static final String COMMAND_LIST_ORDERS = "/controller?command=listOrders";
+
 
 }

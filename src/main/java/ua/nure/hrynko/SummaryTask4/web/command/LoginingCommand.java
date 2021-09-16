@@ -40,9 +40,9 @@ public class LoginingCommand extends Command {
 
         LOG.trace("Request parameter: lastname --> " + lastname);
 
-        //if (DBManager.getInstance().checkforlogin(login)) {
+
             addedСlient.addClientToUsersDb(login, password, name, lastname);
-       // }
+
 
         LOG.trace("add user : --> ");
 

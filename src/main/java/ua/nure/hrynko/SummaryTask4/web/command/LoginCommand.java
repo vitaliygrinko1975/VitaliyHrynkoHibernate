@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import ua.nure.hrynko.SummaryTask4.Path;
-import ua.nure.hrynko.SummaryTask4.db.DBManager;
 import ua.nure.hrynko.SummaryTask4.db.RoleEnum;
 import ua.nure.hrynko.SummaryTask4.db.dao.MySqlUsersDAO;
 import ua.nure.hrynko.SummaryTask4.db.dto.Users;
@@ -34,7 +33,6 @@ public class LoginCommand extends Command {
         HttpSession session = request.getSession();
 
         // obtain login and password from a request
-        DBManager manager = DBManager.getInstance();
         String login = request.getParameter("login");
         LOG.trace("Request parameter: login --> " + login);
 

@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface CarsDAO extends AbstractDAO {
 
-
      void deleteCarToCarsDb(long id) throws DBException;
 
 
@@ -31,14 +30,6 @@ public interface CarsDAO extends AbstractDAO {
      List<Cars> findCars() throws DBException;
 
 
-    /**
-     * Extracts a menu item from the result set.
-     *
-     * @param rs
-     *            Result set from which a menu item entity will be extracted.
-     * @return Cars item entity.
-     */
-
-}
+   }
 
 

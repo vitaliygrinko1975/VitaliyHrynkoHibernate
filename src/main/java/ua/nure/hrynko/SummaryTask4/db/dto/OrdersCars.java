@@ -2,8 +2,8 @@ package ua.nure.hrynko.SummaryTask4.db.dto;
 
 import javax.persistence.*;
 import java.io.Serializable;
-@Entity(name = "orders_cars")
 
+@Entity(name = "orders_cars")
 public class OrdersCars implements Serializable {
 
     @Id

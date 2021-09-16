@@ -1,14 +1,8 @@
 package ua.nure.hrynko.SummaryTask4.db.dao;
-import ua.nure.hrynko.SummaryTask4.db.DBManager;
-import ua.nure.hrynko.SummaryTask4.db.Querys;
-import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.OrdersDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Orders;
-import ua.nure.hrynko.SummaryTask4.exception.DBException;
-import ua.nure.hrynko.SummaryTask4.exception.Messages;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.OrdersDAO;
+import ua.nure.hrynko.SummaryTask4.exception.DBException;
+
 import java.util.logging.Logger;
 
 public class MySqlOrdersDAO implements OrdersDAO {
