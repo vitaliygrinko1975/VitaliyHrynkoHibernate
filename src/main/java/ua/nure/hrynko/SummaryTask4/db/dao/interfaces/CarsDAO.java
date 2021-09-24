@@ -1,5 +1,5 @@
 package ua.nure.hrynko.SummaryTask4.db.dao.interfaces;
-import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+import ua.nure.hrynko.SummaryTask4.db.models.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import java.util.List;
 

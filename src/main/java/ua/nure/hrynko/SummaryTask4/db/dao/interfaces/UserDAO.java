@@ -1,11 +1,8 @@
 package ua.nure.hrynko.SummaryTask4.db.dao.interfaces;
 
-import ua.nure.hrynko.SummaryTask4.db.dto.Users;
+import ua.nure.hrynko.SummaryTask4.db.models.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDAO {

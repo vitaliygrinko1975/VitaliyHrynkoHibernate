@@ -1,6 +1,6 @@
 package ua.nure.hrynko.SummaryTask4.db;
 
-import ua.nure.hrynko.SummaryTask4.db.dto.Users;
+import ua.nure.hrynko.SummaryTask4.db.models.Users;
 
 /**
  * Role entity.

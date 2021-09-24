@@ -3,7 +3,7 @@ package ua.nure.hrynko.SummaryTask4.web.command;
 import org.apache.log4j.Logger;
 import ua.nure.hrynko.SummaryTask4.Path;
 import ua.nure.hrynko.SummaryTask4.db.dao.MySqlCarsDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+import ua.nure.hrynko.SummaryTask4.db.models.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;

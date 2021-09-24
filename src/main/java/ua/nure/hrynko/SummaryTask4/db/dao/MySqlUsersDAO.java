@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import ua.nure.hrynko.SummaryTask4.db.HibernateSessionFactoryUtil;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.UserDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Users;
+import ua.nure.hrynko.SummaryTask4.db.models.Users;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import javax.persistence.Entity;
 import java.util.List;

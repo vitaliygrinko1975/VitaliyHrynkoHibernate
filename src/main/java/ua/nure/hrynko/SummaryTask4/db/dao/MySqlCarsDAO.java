@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import ua.nure.hrynko.SummaryTask4.db.HibernateSessionFactoryUtil;
 import ua.nure.hrynko.SummaryTask4.db.dao.interfaces.CarsDAO;
-import ua.nure.hrynko.SummaryTask4.db.dto.Cars;
+import ua.nure.hrynko.SummaryTask4.db.models.Cars;
 import ua.nure.hrynko.SummaryTask4.exception.DBException;
 import org.hibernate.Transaction;
 import javax.persistence.Entity;

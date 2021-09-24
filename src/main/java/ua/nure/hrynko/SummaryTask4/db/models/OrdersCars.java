@@ -1,4 +1,4 @@
-package ua.nure.hrynko.SummaryTask4.db.dto;
+package ua.nure.hrynko.SummaryTask4.db.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
