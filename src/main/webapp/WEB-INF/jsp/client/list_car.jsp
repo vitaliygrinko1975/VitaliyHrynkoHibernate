@@ -21,25 +21,25 @@
         <div align='center'>
             <div style="display: inline-block; padding-right: 50px;">
                 <a href="controller?command=sortedUpPrice">
-                    <button  class="btn btn-primary btn-block btn-large">Sorted price ></button>
+                    <button  class="btn btn-primary btn-block btn-large">Sort by price ></button>
                 </a>
             </div>
             <div align='center'>
                 <div style="display: inline-block; padding-right: 50px;">
                     <a href="controller?command=sortedDownPrice">
-                        <button  class="btn btn-primary btn-block btn-large">Sorted price <</button>
+                        <button  class="btn btn-primary btn-block btn-large">Sort by price <</button>
                     </a>
                 </div>
             <div align='center'>
                 <div style="display: inline-block; padding-right: 50px;">
                     <a href="controller?command=sortedUpName">
-                        <button  class="btn btn-primary btn-block btn-large">Sorted name ></button>
+                        <button  class="btn btn-primary btn-block btn-large">Sort by name ></button>
                     </a>
                 </div>
                 <div align='center'>
                     <div style="display: inline-block; padding-right: 50px;">
                         <a href="controller?command=sortedDownName">
-                            <button  class="btn btn-primary btn-block btn-large">Sorted name <</button>
+                            <button  class="btn btn-primary btn-block btn-large">Sort by name <</button>
                         </a>
                     </div>
        <table border='1'>
@@ -67,10 +67,11 @@
             </tr>
         </c:forEach>
     </table>
-                    <div class='mydiv'>
+                    <div align='center'>
+                        <div style="display: inline-block; padding-right: 50px;">
                         <form method='post' action="controller">
                             <input type="hidden" name="command" value="selectByClass"/>
-                            Car class: <input type='text' name='selectClass'   required='required'/>
+                            Choose a car by class: <input type='text' name='selectClass'   required='required'/>
                             <button type='submit' name = 'Butt' value = '0' class='btn btn-primary btn-block btn-large'>ENTER</button>
                         </form>
                     </div>
